@@ -58,14 +58,24 @@ Interactive course website for a UCLA Anderson MSBA MLOps course (5 lectures, Fa
 - **Safety**: Hallucination risk, prompt injection, model bias integrated into L4 and L5
 - **Structural model**: CMU 17-445 (milestone-based, production under real load)
 
-## Git
-- Initialized on `main` branch, commit `d5e6f21`
-- `.gitignore`: node_modules, dist, .astro, logs, .DS_Store
+## Git & Deployment
+- GitHub repo: https://github.com/eeshansrivastava89/ucla-lectures
+- GitHub Pages: https://eeshansrivastava89.github.io/ucla-lectures/
+- GitHub Actions auto-deploys on push to `main`
+- 3 commits on `main`
+- `.gitignore`: node_modules, dist, .astro, .env, editor/OS files, logs
+
+## Deployment Pipeline
+1. Push to `main` → GitHub Actions triggers
+2. `pnpm install --frozen-lockfile` → `npx astro build`
+3. `actions/upload-pages-artifact@v3` captures `dist/`
+4. `actions/deploy-pages@v4` publishes to GitHub Pages
 
 ## Key Commands
-- `pnpm dev` — dev server
+- `pnpm dev` — dev server (localhost:4321)
 - `npx astro build` — static build (7 pages)
 - `pnpm add <pkg>` — add dependency
+- `git push` — triggers deploy
 
 ## File Count
 - 25 tracked files
@@ -79,6 +89,4 @@ Interactive course website for a UCLA Anderson MSBA MLOps course (5 lectures, Fa
 
 ## Known Issues / Next Steps
 - [ ] Visual review by user — verify mermaid diagrams render correctly in browser
-- [ ] Possible deployment to fly.dev
-- [ ] Share with UCLA professor
 - [ ] Vault notes at `/Users/eeshans/PersonalVault/ucla-ml-ops/ucla mlops course.md`
