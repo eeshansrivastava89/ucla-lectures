@@ -5,8 +5,15 @@ export interface Props {
   current: string;
 }
 const { current } = Astro.props;
+const base = Astro.base ?? '';
 const brand = siteData.brand;
 const nav = siteData.nav;
+
+// Resolve a path relative to the base URL
+function resolve(path: string) {
+  if (!path || path === '/') return base || '/';
+  return `${base}/${path}`.replace(/\/+/g, '/');
+}
 ---
 <button id="sidebar-toggle" class="lg:hidden fixed top-4 left-4 z-50 w-10 h-10 flex items-center justify-center rounded bg-white border-2 border-black text-black hover:bg-black hover:text-white transition-colors" aria-label="Menu">
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -16,7 +23,7 @@ const nav = siteData.nav;
 
 <aside id="sidebar" class="fixed top-0 left-0 bottom-0 w-64 bg-white border-r-2 border-black z-40 overflow-y-auto transition-transform lg:translate-x-0 -translate-x-full lg:block">
   <div class="px-6 pt-8 pb-4">
-    <a href="/" class="block">
+    <a href={resolve('/')} class="block">
       <span class="text-base font-bold tracking-tight text-black">{brand.short.split(' · ')[0]}</span>
       <span class="text-neutral-400 font-light"> · </span>
       <span class="text-base font-bold tracking-tight text-black">{brand.short.split(' · ')[1]}</span>
@@ -32,7 +39,7 @@ const nav = siteData.nav;
       const isActive = current === item.id;
       return (
         <a
-          href={item.href}
+          href={resolve(item.href)}
           class:list={[
             "block px-3 py-2.5 rounded-md text-sm font-medium transition-colors",
             isActive

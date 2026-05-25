@@ -8,6 +8,12 @@ const { Content } = await render(entry);
 const d = entry.data;
 const h = d.sectionHeadings;
 const th = d.tableHeaders;
+
+const base = Astro.base ?? '';
+function resolve(path: string) {
+  if (!path || path === '/') return base || '/';
+  return `${base}/${path}`.replace(/\/+/g, '/');
+}
 ---
 <Course title="FOSS → Scale — MLOps for Business Analytics" current="scale">
 
@@ -78,8 +84,8 @@ const th = d.tableHeaders;
   </section>
 
   <div class="flex justify-between items-center pt-8 border-t-2 border-black">
-    <a href="/lectures/5" class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">{d.prevNav}</a>
-    <a href="/" class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">{d.nextNav}</a>
+    <a href={resolve('lectures/5')} class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">{d.prevNav}</a>
+    <a href={resolve('/')} class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">{d.nextNav}</a>
   </div>
 
 </Course>

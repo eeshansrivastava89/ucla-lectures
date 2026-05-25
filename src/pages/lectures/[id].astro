@@ -20,6 +20,12 @@ const d = lecture.data;
 const h = d.sectionHeadings;
 const prev = index > 0 ? lectures[index - 1] : null;
 const next = index < lectures.length - 1 ? lectures[index + 1] : null;
+
+const base = Astro.base ?? '';
+function resolve(path: string) {
+  if (!path || path === '/') return base || '/';
+  return `${base}/${path}`.replace(/\/+/g, '/');
+}
 ---
 <Course title={`Lecture ${d.icon} — ${d.title}`} current={`lecture-${Astro.params.id}`}>
 
@@ -74,12 +80,12 @@ const next = index < lectures.length - 1 ? lectures[index + 1] : null;
 
   <div class="flex justify-between items-center pt-8 border-t-2 border-black">
     {prev ? (
-      <a href={`/lectures/${prev.id.replace('lecture-', '')}`} class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">← {prev.data.prevNav || `${prev.data.icon} · ${prev.data.title}`}</a>
+      <a href={resolve(`lectures/${prev.id.replace('lecture-', '')}`)} class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">← {prev.data.prevNav || `${prev.data.icon} · ${prev.data.title}`}</a>
     ) : <div />}
     {next ? (
-      <a href={`/lectures/${next.id.replace('lecture-', '')}`} class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">{d.nextNav || `${next.data.icon} · ${next.data.title}`} →</a>
+      <a href={resolve(`lectures/${next.id.replace('lecture-', '')}`)} class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">{d.nextNav || `${next.data.icon} · ${next.data.title}`} →</a>
     ) : (
-      <a href="/scale" class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">{d.nextNav} →</a>
+      <a href={resolve('scale')} class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">{d.nextNav} →</a>
     )}
   </div>
 
