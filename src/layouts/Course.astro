@@ -1,0 +1,19 @@
+---
+import Base from './Base.astro';
+import Sidebar from '../components/Sidebar.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  current: string;
+}
+const { title, current } = Astro.props;
+---
+<Base title={title}>
+  <Sidebar current={current} />
+  <div class="lg:pl-64">
+    <main class="max-w-4xl mx-auto px-8 lg:px-12 pt-20 pb-32">
+      <slot />
+    </main>
+  </div>
+</Base>

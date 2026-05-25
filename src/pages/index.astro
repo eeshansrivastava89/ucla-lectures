@@ -1,0 +1,157 @@
+---
+import Course from '../layouts/Course.astro';
+import { getCollection, getEntry, render } from 'astro:content';
+import '../styles/global.css';
+
+const overview = await getEntry('pages', 'overview');
+const { Content } = await render(overview);
+const d = overview.data;
+const h = d.sectionHeadings;
+const c = d.copy;
+const th = d.tableHeaders;
+
+const lectures = (await getCollection('pages'))
+  .filter((p: any) => p.id.startsWith('lecture-'))
+  .sort((a: any, b: any) => a.id.localeCompare(b.id));
+---
+<Course title={`${d.title} — ${d.program}`} current="overview">
+
+  <h1 class="text-4xl font-bold tracking-tight text-black mb-2">{d.title}</h1>
+  <p class="text-lg text-neutral-700 font-medium mb-10">{d.subtitle}</p>
+
+  <section class="mb-10">
+    <table class="info-table text-sm w-full">
+      <tbody>
+        {d.info.map((row: any) => (
+          <tr class="info-row">
+            <td class="info-label">{row.label}</td>
+            <td class="info-value" set:html={row.value} />
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="section-heading">{h.about}</h2>
+    <div class="prose-course">
+      <Content />
+    </div>
+  </section>
+
+  <section class="mb-10" id="schedule">
+    <h2 class="section-heading">{h.schedule}</h2>
+    <p class="text-sm text-neutral-700 mb-3">{c.scheduleNote}</p>
+    <div class="border-2 border-black rounded overflow-hidden">
+      <table class="data-table">
+        <thead><tr>
+          {th.schedule.map((col: any) => <th class={col.width || ''}>{col.label}</th>)}
+        </tr></thead>
+        <tbody>
+          {lectures.map((l: any) => {
+            const id = l.id.replace('lecture-', '');
+            return (
+              <tr>
+                <td class="font-mono font-bold text-black">{l.data.icon}</td>
+                <td>
+                  <a href={`/lectures/${id}`} class="text-black hover:text-neutral-600 transition-colors font-semibold">{l.data.title}</a>
+                  <p class="text-[13px] text-neutral-600 mt-0.5">{l.data.tagline}</p>
+                </td>
+                <td class="text-[13px] text-neutral-700">{l.data.deliverable}</td>
+                <td class="text-[13px] text-neutral-600">{l.data.tools.join(' · ')}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="section-heading">{h.assessment}</h2>
+    <div class="prose-course"><p>{c.assessmentNote}</p></div>
+    <div class="border-2 border-black rounded overflow-hidden mt-3">
+      <table class="data-table">
+        <thead><tr>
+          {th.assessment.map((col: any) => <th class={col.width || ''}>{col.label}</th>)}
+        </tr></thead>
+        <tbody>
+          {d.assessment.map((row: any) => (
+            <tr class:list={[row.highlight && 'font-semibold text-black']}>
+              <td>{row.component}</td>
+              <td class="text-right font-mono font-bold text-black">{row.weight}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="section-heading">{h.domains}</h2>
+    <div class="prose-course"><p>{c.domainsNote}</p></div>
+    <div class="border-2 border-black rounded overflow-hidden mt-3">
+      <table class="data-table">
+        <thead><tr>
+          {th.domains.map((col: any) => <th>{col.label}</th>)}
+        </tr></thead>
+        <tbody>
+          {d.domains.map((row: any) => (
+            <tr class:list={[row.primary && 'font-semibold text-black']}>
+              <td>
+                {row.name}
+                {row.primary && <span class="ml-1 text-[10px] uppercase tracking-wider bg-black text-white px-1.5 py-0.5 rounded font-bold">{c.defaultBadge}</span>}
+              </td>
+              <td class="text-[13px] text-neutral-700">{row.mlTask}</td>
+              <td class="text-[13px] text-neutral-700">{row.llmInterface}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="section-heading">{h.safety}</h2>
+    <div class="prose-course mb-3"><p>{c.safetyNote}</p></div>
+    <div class="grid sm:grid-cols-3 gap-4">
+      {d.safety.map((item: any) => (
+        <div class="border-2 border-black rounded p-4">
+          <h3 class="text-sm font-bold text-black mb-1">{item.title}</h3>
+          <p class="text-[13px] text-neutral-700">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="section-heading">{h.logistics}</h2>
+    <table class="info-table text-sm w-full">
+      <tbody>
+        {d.logistics.map((row: any) => (
+          <tr class="info-row">
+            <td class="info-label">{row.label}</td>
+            <td class="info-value" set:html={row.value} />
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="section-heading">{h.references}</h2>
+    <ul class="text-sm text-neutral-700 space-y-1">
+      {d.references.map((ref: any) => (
+        <li><a href={ref.url}>{ref.title}</a> — {ref.note}</li>
+      ))}
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="section-heading">{h.instructor}</h2>
+    <div class="prose-course">
+      <p><strong>{d.instructor}</strong> — <Fragment set:html={d.instructorBio} /></p>
+    </div>
+  </section>
+
+</Course>

@@ -1,0 +1,86 @@
+---
+import Course from '../../layouts/Course.astro';
+import { getCollection, render } from 'astro:content';
+import '../../styles/global.css';
+
+export async function getStaticPaths() {
+  const lectures = (await getCollection('pages'))
+    .filter((p: any) => p.id.startsWith('lecture-'))
+    .sort((a: any, b: any) => a.id.localeCompare(b.id));
+
+  return lectures.map((lecture: any, index: number) => ({
+    params: { id: lecture.id.replace('lecture-', '') },
+    props: { lecture, index, lectures },
+  }));
+}
+
+const { lecture, index, lectures } = Astro.props;
+const { Content } = await render(lecture);
+const d = lecture.data;
+const h = d.sectionHeadings;
+const prev = index > 0 ? lectures[index - 1] : null;
+const next = index < lectures.length - 1 ? lectures[index + 1] : null;
+---
+<Course title={`Lecture ${d.icon} — ${d.title}`} current={`lecture-${Astro.params.id}`}>
+
+  <p class="text-[11px] uppercase tracking-[0.2em] text-neutral-500 font-bold mb-2">Lecture {d.icon}</p>
+  <h1 class="text-3xl font-bold tracking-tight text-black mb-2">{d.title}</h1>
+  <p class="text-neutral-700 font-medium mb-8">{d.tagline}</p>
+
+  <section class="mb-10">
+    <h2 class="section-heading">{h.concept}</h2>
+    <div class="prose-course max-w-2xl">
+      <Content />
+    </div>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="section-heading">{h.topics}</h2>
+    <ul class="space-y-2">
+      {d.topics.map((t: string) => (
+        <li class="flex items-start gap-3 text-[15px] text-neutral-800">
+          <span class="w-2 h-2 rounded-full bg-black mt-1.5 shrink-0"></span>
+          <span>{t}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="section-heading">{h.handsOn}</h2>
+    <div class="border-2 border-black rounded p-5">
+      <p class="text-[15px] text-neutral-800 mb-3">{d.handsOn}</p>
+      <div class="flex flex-wrap gap-2">
+        {d.tools.map((t: string) => (
+          <span class="text-[12px] font-bold bg-black text-white px-2.5 py-1 rounded">{t}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="section-heading">{h.deliverable}</h2>
+    <div class="border-2 border-black bg-black rounded p-5">
+      <p class="text-[15px] text-white font-semibold">{d.deliverable}</p>
+    </div>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="section-heading">{h.bigTech}</h2>
+    <div class="border-2 border-neutral-300 rounded p-5 bg-neutral-50">
+      <p class="text-[15px] text-neutral-700">{d.bigTech}</p>
+    </div>
+  </section>
+
+  <div class="flex justify-between items-center pt-8 border-t-2 border-black">
+    {prev ? (
+      <a href={`/lectures/${prev.id.replace('lecture-', '')}`} class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">← {prev.data.prevNav || `${prev.data.icon} · ${prev.data.title}`}</a>
+    ) : <div />}
+    {next ? (
+      <a href={`/lectures/${next.id.replace('lecture-', '')}`} class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">{d.nextNav || `${next.data.icon} · ${next.data.title}`} →</a>
+    ) : (
+      <a href="/scale" class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">{d.nextNav} →</a>
+    )}
+  </div>
+
+</Course>

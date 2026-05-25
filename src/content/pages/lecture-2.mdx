@@ -1,0 +1,49 @@
+---
+title: "Experiment Tracking & Model Selection"
+tagline: "Know what you shipped and why"
+icon: "02"
+sectionHeadings:
+  concept: Concept
+  topics: Topics
+  handsOn: "Hands-On"
+  deliverable: Deliverable
+  bigTech: "How Big Tech Does This"
+
+prevNav: "01 · From Notebook to Prediction Service"
+nextNav: "03 · Infrastructure & Orchestration"
+
+topics:
+  - "Why experiment tracking matters for business decisions and regulatory audits"
+  - "MLflow — tracking experiments, parameters, and metrics"
+  - "Model comparison — accuracy, latency, cost, fairness (multi-objective selection)"
+  - "Model registry — from 'best model in my notebook' to 'model v2.1 in the registry'"
+handsOn: "Track 5+ experiment runs with MLflow, compare models on accuracy and speed, register the best one, and update the API to load it automatically from the registry."
+tools:
+  - MLflow
+  - scikit-learn
+  - pandas
+deliverable: "API now loads the best model from MLflow registry instead of hardcoded file"
+bigTech: "MLflow (local) → Vertex AI Experiments / SageMaker Experiments / Weights & Biases. Same tracking, managed infrastructure, team collaboration, and enterprise audit trails."
+---
+
+```mermaid
+flowchart LR
+    subgraph MLflow[MLflow Tracking]
+        R1[run_1 · acc=0.82]
+        R2[run_2 · acc=0.87]
+        R3[run_3 · acc=0.91]
+        R4["run_4 · acc=0.94 ★"]
+    end
+    R4 -->|register| REG[MODEL REGISTRY<br/>churn_v2.1 · production]
+
+    style R1 fill:#fafafa,stroke:#e5e5e5,stroke-width:1px
+    style R2 fill:#fafafa,stroke:#e5e5e5,stroke-width:1px
+    style R3 fill:#fafafa,stroke:#e5e5e5,stroke-width:1px
+    style R4 fill:#fff,stroke:#111,stroke-width:2px
+    style REG fill:#111,color:#fff,stroke:#111,stroke-width:2px
+    style MLflow fill:#fff,stroke:#111,stroke-width:2px
+    ```
+
+When you train one model, you remember what you did. When you train fifty, you don't. This lecture introduces experiment tracking — the production habit that separates responsible ML from ad-hoc ML.
+
+Students track experiments, compare models on multiple dimensions, and register the best one. They swap their hardcoded model for a *versioned, auditable* one. This is also where we introduce the idea that "best" is not just accuracy — latency, cost, and fairness all matter.

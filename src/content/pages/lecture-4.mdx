@@ -1,0 +1,49 @@
+---
+title: "Monitoring, Testing, Bias & CI/CD"
+tagline: "Know when it breaks before your users do"
+icon: "04"
+
+sectionHeadings:
+  concept: Concept
+  topics: Topics
+  handsOn: "Hands-On"
+  deliverable: Deliverable
+  bigTech: "How Big Tech Does This"
+
+prevNav: "03 · Infrastructure & Orchestration"
+nextNav: "05 · LLM Interface + Safety + Value Realization"
+
+topics:
+  - "Unit and integration testing for ML pipelines"
+  - "Data drift & concept drift — what changes and how to detect it"
+  - "Evidently — monitoring dashboards for model quality and data quality"
+  - "Bias auditing — checking for disparate impact across protected groups"
+  - "GitHub Actions CI/CD — every push is validated automatically"
+handsOn: "Add pytest test suites, Evidently drift detection dashboards, bias audit reports for key segments, and a GitHub Actions workflow that runs on every push."
+tools:
+  - pytest
+  - Evidently AI
+  - GitHub Actions
+deliverable: "Tested, monitored, CI/CD-enabled service with drift alerts and bias reports"
+bigTech: "Evidently → Arize / Fiddler with real-time drift detection and automated alerting. pytest → enterprise test suites with coverage gates. GitHub Actions → Jenkins / Buildkite with staging environments and canary deployments."
+---
+
+```mermaid
+flowchart LR
+    subgraph PH[PIPELINE HEALTH]
+        T["✅ 12/12 tests"]
+        DR["drift: 0.03<br/>within threshold"]
+        BI["bias: 0.02<br/>review seg C"]
+        CI["CI/CD<br/>✅ passed"]
+    end
+
+    style PH fill:#fff,stroke:#111,stroke-width:2px
+    style T fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#16a34a
+    style DR fill:#fafafa,stroke:#111,stroke-width:1px
+    style BI fill:#fafafa,stroke:#111,stroke-width:1px
+    style CI fill:#fafafa,stroke:#111,stroke-width:1px
+    ```
+
+A model that worked at deployment can silently fail as data shifts, pipelines break, or biases emerge. This lecture adds the *production safety layer*: tests that run automatically, monitoring that catches drift, and CI/CD that ensures every change is validated before reaching production.
+
+We also address bias auditing — fairness is a production requirement, not a nice-to-have. A deployed model affects real people, and MSBA students will be the ones asked "is this model fair?" in their first month on the job.

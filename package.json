@@ -1,0 +1,27 @@
+{
+  "name": "ucla-lectures",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "packageManager": "pnpm@10.27.0",
+  "dependencies": {
+    "@astrojs/mdx": "^5.0.6",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.3.7",
+    "astro-mermaid": "^2.0.1",
+    "mermaid": "^11.15.0",
+    "tailwindcss": "^4.3.0",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "pnpm": {
+    "approvedBuilds": [
+      "esbuild",
+      "sharp"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", sans-serif;
+    background-color: #ffffff;
+    color: #111111;
+  }
+  ::selection { background-color: #111; color: #fff; }
+}
+
+@layer components {
+  .prose-course p { @apply text-[15px] leading-relaxed text-neutral-800 mb-3; }
+  .prose-course em { @apply not-italic text-black font-semibold; }
+  .prose-course strong { @apply font-semibold text-black; }
+  .prose-course a { @apply text-black underline underline-offset-4 decoration-neutral-400 hover:decoration-black transition-colors; }
+
+  .section-heading { @apply text-[11px] font-bold uppercase tracking-[0.2em] text-black mb-4; }
+
+  .data-table { @apply w-full text-sm; }
+  .data-table thead th { @apply text-left text-[11px] uppercase tracking-wider text-black font-bold px-4 py-3 border-b-2 border-black; }
+  .data-table tbody td { @apply px-4 py-3 border-b border-neutral-200 text-neutral-800; }
+  .data-table tbody tr:hover { @apply bg-neutral-50; }
+  .data-table tbody tr:last-child td { @apply border-b-0; }
+
+  .info-row { @apply border-b border-neutral-200 last:border-b-0; }
+  .info-label { @apply py-3 pr-6 text-black font-bold text-[11px] uppercase tracking-wider w-36 align-top; }
+  .info-value { @apply py-3 text-[15px] text-neutral-800; }
+}

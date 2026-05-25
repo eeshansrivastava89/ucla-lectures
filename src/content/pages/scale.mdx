@@ -1,0 +1,106 @@
+---
+title: "From FOSS to Scale"
+subtitle: "Same pipeline. Different infrastructure."
+
+pageLabel: Closer
+
+sectionHeadings:
+  principles: Principles
+  stackMap: "Full Stack Mapping"
+  scaleChanges: "What Changes at Scale"
+  walkAway: "What Students Walk Away With"
+
+tableHeaders:
+  stackMap:
+    - label: "FOSS / Local"
+    - label: Enterprise
+    - label: Lecture
+      width: "w-16"
+
+prevNav: "← 05 · LLM Interface"
+nextNav: "Overview →"
+
+principles:
+  - num: "01"
+    title: "Same pipeline, different scale"
+    desc: "Every FOSS tool has an enterprise counterpart solving the same problem at larger scale. The architecture doesn't change — the infrastructure does."
+  - num: "02"
+    title: "Concepts are portable"
+    desc: "Understand drift in Evidently → operate Arize. Know MLflow locally → navigate Vertex AI. Mental models transfer."
+  - num: "03"
+    title: "Build free, scale when ready"
+    desc: "Zero-cost tools on your laptop. Enterprise infrastructure when the business case demands it. No premature optimization."
+
+stackMap:
+  - foss: "Python + XGBoost"
+    enterprise: "Managed ML (AutoML, feature stores)"
+    lecture: "01"
+  - foss: "FastAPI"
+    enterprise: "API Gateway + Load Balancer + Auth"
+    lecture: "01"
+  - foss: "MLflow (local)"
+    enterprise: "Vertex AI / SageMaker / W&B"
+    lecture: "02"
+  - foss: "Docker"
+    enterprise: "Kubernetes (EKS / GKE)"
+    lecture: "03"
+  - foss: "Docker Compose"
+    enterprise: "Helm charts + GitOps (ArgoCD)"
+    lecture: "03"
+  - foss: "Prefect"
+    enterprise: "Airflow at scale + DAG versioning"
+    lecture: "03"
+  - foss: "pytest + Evidently"
+    enterprise: "Enterprise suites + Arize / Fiddler"
+    lecture: "04"
+  - foss: "GitHub Actions"
+    enterprise: "Jenkins / Buildkite + staging envs"
+    lecture: "04"
+  - foss: "Claude / OpenAI API"
+    enterprise: "Self-hosted LLM + model routing"
+    lecture: "05"
+  - foss: "Ollama (local)"
+    enterprise: "vLLM / TensorRT-LLM serving"
+    lecture: "05"
+  - foss: "RAG over CSV"
+    enterprise: "RAG over vector DB (Pinecone/Weaviate)"
+    lecture: "05"
+  - foss: "Prompt strings"
+    enterprise: "A/B tested prompts + guardrails service"
+    lecture: "05"
+  - foss: "No auth"
+    enterprise: "OAuth2 + RBAC + secret management"
+    lecture: "—"
+  - foss: "Local file storage"
+    enterprise: "S3 / GCS + data versioning (DVC/LakeFS)"
+    lecture: "—"
+
+scaleChanges:
+  - title: "Availability"
+    desc: "Laptop → 99.9% uptime with health checks, auto-restart, multi-AZ"
+  - title: "Observability"
+    desc: "Log files → distributed tracing, structured logging, automated alerting"
+  - title: "Security"
+    desc: "No auth → OAuth2, RBAC, secret management, network policies"
+  - title: "Compliance"
+    desc: "\"It works\" → data lineage, model cards, audit trails, GDPR/CCPA"
+  - title: "Cost control"
+    desc: "Free tier → GPU allocation, spot instances, FinOps dashboards"
+
+walkAway:
+  - "A working AI product — prediction API + LLM interface — built end-to-end"
+  - "Mental models that transfer — FOSS to enterprise, same concepts, different scale"
+  - "Production habits — tracking, testing, monitoring, CI/CD, bias auditing, LLM safety"
+  - "The confidence to say \"I can deploy a model\" — not just \"I can train one\""
+---
+
+```mermaid
+flowchart LR
+    FOSS["FOSS Stack<br/>FastAPI · MLflow · Docker<br/>pytest · Evidently · Prefect"]
+    -->|same pipeline| ENT["Enterprise<br/>K8s · Vertex AI · Arize<br/>Airflow · Jenkins · vLLM"]
+
+    style FOSS fill:#fafafa,stroke:#a3a3a3,stroke-width:2px
+    style ENT fill:#fff,stroke:#111,stroke-width:3px
+    ```
+
+The FOSS stack gets you to a working product. The enterprise stack gets you to a *reliable product at scale*.

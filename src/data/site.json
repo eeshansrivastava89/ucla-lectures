@@ -1,0 +1,19 @@
+{
+  "brand": {
+    "short": "MLOps · UCLA",
+    "program": "Anderson MSBA · Fall 2026",
+    "instructor": "Eeshan Srivastava",
+    "instructorUrl": "https://theasymptotic.substack.com"
+  },
+  "nav": [
+    { "href": "/", "label": "Overview", "id": "overview" },
+    { "type": "divider" },
+    { "href": "/lectures/1", "label": "01 · Notebook → API", "id": "lecture-1" },
+    { "href": "/lectures/2", "label": "02 · Tracking & Selection", "id": "lecture-2" },
+    { "href": "/lectures/3", "label": "03 · Infrastructure", "id": "lecture-3" },
+    { "href": "/lectures/4", "label": "04 · Monitoring & CI/CD", "id": "lecture-4" },
+    { "href": "/lectures/5", "label": "05 · LLM Interface", "id": "lecture-5" },
+    { "type": "divider" },
+    { "href": "/scale", "label": "FOSS → Scale", "id": "scale" }
+  ]
+}

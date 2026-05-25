@@ -1,0 +1,45 @@
+---
+title: "From Notebook to Prediction Service"
+tagline: "Ship your first ML endpoint"
+icon: "01"
+sectionHeadings:
+  concept: Concept
+  topics: Topics
+  handsOn: "Hands-On"
+  deliverable: Deliverable
+  bigTech: "How Big Tech Does This"
+
+prevNav: null
+nextNav: "02 · Experiment Tracking & Model Selection"
+
+topics:
+  - "Notebooks vs. production — the gap nobody teaches"
+  - "Training a churn model (XGBoost) on real data"
+  - "FastAPI — from Python function to HTTP endpoint"
+  - "Testing your API — request, response, edge cases"
+handsOn: "Deploy a churn prediction endpoint that returns real predictions from a real model. Send a JSON request, get back a churn probability and risk tier."
+tools:
+  - Python
+  - XGBoost
+  - FastAPI
+  - Uvicorn
+  - httpie
+deliverable: "Running prediction API with /predict endpoint"
+bigTech: "ML in a notebook → ML behind an API gateway with load balancers, rate limiting, and auth. Same pattern, 100× the infrastructure. At scale, add service mesh (Istio), circuit breakers, and distributed tracing."
+---
+
+```mermaid
+flowchart LR
+    NB["📓 Notebook<br/>In [1]: model = xgboost.train()<br/>predictions = model.predict(X)"]
+    API["🚀 FastAPI<br/>@app.post('/predict')<br/>def predict(req):<br/>  return model.predict(req)"]
+    NB -.->|deploy| API
+    API -->|":8000"| SVC(( &#x1F310; ))
+
+    style NB fill:#fafafa,stroke:#a3a3a3,stroke-width:2px,stroke-dasharray: 8 4
+    style API fill:#fff,stroke:#111,stroke-width:2px
+    style SVC fill:#fff,stroke:#111,stroke-width:2px
+    ```
+
+Every ML project starts in a notebook. But a notebook is not a product — it's a prototype. In this lecture, we take a trained model and deploy it as a live prediction API that anyone can call.
+
+Students leave with a working endpoint and the mental model: *if it's not deployed, it doesn't exist.* This is the single most important shift from academic ML to production ML — and most courses never teach it.

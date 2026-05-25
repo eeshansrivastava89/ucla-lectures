@@ -1,0 +1,129 @@
+---
+title: "MLOps for Business Analytics"
+subtitle: "From Model to Product in 5 Lectures"
+program: "UCLA Anderson MSBA · Fall 2026"
+sectionHeadings:
+  about: About
+  schedule: Schedule
+  assessment: Assessment
+  domains: Domain Options
+  safety: "Safety & Responsible AI"
+  logistics: Logistics
+  references: References
+  instructor: Instructor
+
+copy:
+  scheduleNote: "3-hour sessions: concept (50 min) → break (10 min) → build (120 min). Students leave each session with a new working capability."
+  assessmentNote: "Project milestones, not exams. Each lecture has a deliverable — a checkpoint on the same running project. Students submit the same repo each time, showing additive progress."
+  domainsNote: "The 5-lecture arc is domain-agnostic — any supervised ML problem with a public dataset and a natural \"ask questions\" story works. Churn is the default; others can be substituted."
+  safetyNote: "Deployed models affect real people. Three concerns integrated across lectures 4 and 5:"
+  defaultBadge: Default
+
+tableHeaders:
+  schedule:
+    - label: "#"
+      width: "w-10"
+    - label: Lecture
+    - label: Deliverable
+      width: "w-44"
+    - label: Tools
+      width: "w-28"
+  assessment:
+    - label: Component
+    - label: Weight
+      width: "w-16 text-right"
+  domains:
+    - label: Domain
+    - label: "ML Task"
+    - label: "LLM Interface"
+info:
+  - label: Instructor
+    value: "Eeshan Srivastava · Sr. DS Manager, Starbucks · <a href='https://theasymptotic.substack.com'>Asymptotic</a>"
+  - label: Format
+    value: "5 lectures · 3 hrs each · build-along workshop"
+  - label: Audience
+    value: "MSBA — you know how to build a model; this course teaches you to make it work in the real world"
+  - label: Project
+    value: "Deploy an AI product end-to-end: prediction API → tracking → containers → monitoring → LLM interface"
+  - label: Infra
+    value: "Your laptop + GitHub Codespaces. Zero cloud spend. Starter repo provided. <a href='/scale'>Stack details →</a>"
+
+assessment:
+  - component: "Milestone 1: Working prediction API"
+    weight: "20%"
+  - component: "Milestone 2: Experiment tracking + model selection"
+    weight: "15%"
+  - component: "Milestone 3: Containerized service + automated pipeline"
+    weight: "20%"
+  - component: "Milestone 4: Tests, monitoring, bias audit, CI/CD"
+    weight: "20%"
+  - component: "Milestone 5: Full product (API + LLM + safety)"
+    weight: "25%"
+    highlight: true
+
+domains:
+  - name: "Customer Churn"
+    mlTask: "Predict which customers leave"
+    llmInterface: "Explain why · suggest retention"
+    primary: true
+  - name: "Fraud Detection"
+    mlTask: "Flag suspicious transactions"
+    llmInterface: "Explain risk score & evidence"
+  - name: "Demand Forecasting"
+    mlTask: "Predict product demand"
+    llmInterface: "Answer driver questions"
+  - name: "Recommendation"
+    mlTask: "Recommend items to users"
+    llmInterface: "Explain why · preference queries"
+
+safety:
+  - title: "Hallucination Risk"
+    description: "LLMs fabricate. Students build guardrails to ground responses in real data and validate against predictions."
+  - title: "Prompt Injection"
+    description: "Conversational interfaces are attack surfaces. Input validation, output sanitization, prompt hardening."
+  - title: "Model Bias"
+    description: "Bias auditing across protected groups. Fairness is a production requirement, not advisory."
+
+logistics:
+  - label: "Environment"
+    value: "Python, Docker Desktop, terminal. GitHub Codespaces (free tier) as fallback. Starter repo — fork and build forward."
+  - label: "LLM Access"
+    value: "Claude or OpenAI API key for L5 (~$5 credits). <a href='https://ollama.com'>Ollama</a> works locally for free."
+  - label: "UCLA Infra"
+    value: "Not required. Cloud credits for final deployment would be nice."
+  - label: "AI Policy"
+    value: "AI tools may be used freely — learning to work with AI is itself a course objective. All submitted code must be your own. Disclose form and extent of AI assistance."
+
+references:
+  - title: "DataTalksClub MLOps Zoomcamp"
+    url: "https://github.com/DataTalksClub/mlops-zoomcamp"
+    note: "Free 9-week course · NY Taxi example"
+  - title: "CMU 17-445 ML in Production"
+    url: "https://mlip-cmu.github.io/s2025/"
+    note: "Milestone-based · production under real load"
+  - title: "Microsoft LLMOPs Workshop"
+    url: "https://microsoft.github.io/llmops-workshop/"
+    note: "Slides + hands-on labs"
+  - title: "DeepLearning.AI ML in Production"
+    url: "https://www.deeplearning.ai/courses/machine-learning-in-production/"
+    note: "Andrew Ng · deployment-first"
+
+instructor: "Eeshan Srivastava"
+instructorBio: "Senior Data Science Manager at Starbucks. Deploying marketing measurement systems (MMM, incrementality, experimentation) at nine-figure scale. Previously at Overstock.com. MS in Business Analytics, Case Western (Weatherhead 5 Under 35). Speaker at UCLA Anderson and company-wide AI workshops (200+). Writes about local AI and MLOps on [Asymptotic](https://theasymptotic.substack.com)."
+---
+
+```mermaid
+flowchart LR
+    ML[XGBoost<br/>predict] -->|serve| API[FastAPI<br/>serve]
+    API -->|converse| LLM[Claude / Ollama<br/>explain & act]
+
+    style ML fill:#fff,stroke:#111,stroke-width:2px
+    style API fill:#fff,stroke:#111,stroke-width:2px
+    style LLM fill:#fff,stroke:#111,stroke-width:3px
+    ```
+
+This course covers the production side of ML that most programs never teach: how to take a trained model and turn it into a deployed, monitored, explainable product. Each lecture teaches concepts through building — students start with a Jupyter notebook and end, five weeks later, with a shipped AI application.
+
+The course is organized around a single project that grows every week: *train → deploy → track → containerize → monitor → wrap with LLM*. By the end, students have built a hybrid ML + LLM architecture — a prediction engine with an intelligent conversational front-end.
+
+**Every concept connects back to business decisions:** what does drift mean for KPIs, why does versioning matter for audits, how does an LLM turn a score into an action?

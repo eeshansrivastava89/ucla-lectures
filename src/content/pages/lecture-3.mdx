@@ -1,0 +1,42 @@
+---
+title: "Infrastructure & Orchestration"
+tagline: "From laptop to container"
+icon: "03"
+
+sectionHeadings:
+  concept: Concept
+  topics: Topics
+  handsOn: "Hands-On"
+  deliverable: Deliverable
+  bigTech: "How Big Tech Does This"
+
+prevNav: "02 · Experiment Tracking & Model Selection"
+nextNav: "04 · Monitoring, Testing, Bias & CI/CD"
+
+topics:
+  - "Docker — why containers exist and what problem they solve"
+  - "Containerizing the FastAPI service"
+  - "Pipeline orchestration — Prefect for automated retraining"
+  - "Environment reproducibility — from requirements.txt to Dockerfile"
+handsOn: "Dockerize the entire service (API + MLflow), add a Prefect pipeline that retrains and re-registers the model on a schedule, and verify it all runs from a single `docker compose up`."
+tools:
+  - Docker
+  - Docker Compose
+  - Prefect
+deliverable: "Containerized service + automated retraining pipeline"
+bigTech: "Docker → Kubernetes on EKS/GKE with HPA autoscaling. Prefect → Airflow at scale with DAG versioning, SLA monitoring, and cross-team dependency management."
+---
+
+```mermaid
+flowchart LR
+    D[🐳 Docker<br/>containerized] --> M[MLflow<br/>tracked] --> P[Prefect<br/>automated]
+    P -.->|schedule| P
+
+    style D fill:#fff,stroke:#111,stroke-width:2px
+    style M fill:#fff,stroke:#111,stroke-width:2px
+    style P fill:#fff,stroke:#111,stroke-width:3px
+    ```
+
+"It works on my machine" is not a deployment strategy. This lecture containerizes the prediction service and adds orchestration — so the system runs on schedule, not just when someone remembers to retrain.
+
+Students go from a fragile laptop setup to a *reproducible, automated pipeline*. Docker guarantees the same environment everywhere. Prefect guarantees the same process every time. Together, they turn a script into a system.
