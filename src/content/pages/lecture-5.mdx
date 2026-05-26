@@ -6,9 +6,9 @@ icon: "05"
 sectionHeadings:
   concept: Concept
   topics: Topics
-  handsOn: "Hands-On"
+  handsOn: "What You'll Build"
   deliverable: Deliverable
-  bigTech: "How Big Tech Does This"
+  bigTech: "From Classroom to Full Scale"
 
 prevNav: "04 · Monitoring, Testing, Bias & CI/CD"
 nextNav: "FOSS → Scale"
@@ -18,9 +18,10 @@ topics:
   - "Building an LLM interface (API-first with Claude/OpenAI — the industry standard)"
   - "Local alternative — Ollama for free, offline exploration (doesn't scale, but great for learning)"
   - "RAG over churn data — grounding the LLM in real numbers, not fabrication"
-  - "Safety — hallucination risk, prompt injection, output guardrails"
+  - "Safety — hallucination guardrails, prompt injection, output sanitization, fallback to predicted values"
+  - "Security beyond the LLM — adversarial inputs, data poisoning, model extraction. The attack surface is larger than just the prompt."
   - "Value realization — connecting ML output to business action"
-handsOn: "Build a conversational interface that explains churn predictions in plain English, suggests retention actions based on the data, and answers follow-up questions about customer segments and trends."
+handsOn: "Build a conversational interface that explains churn predictions in plain English, suggests retention actions based on the data, and answers follow-up questions about customer segments and trends. Add input sanitization and output grounding so the LLM cannot fabricate predictions that contradict the model."
 tools:
   - "Claude API / OpenAI API"
   - "Ollama (local)"
@@ -39,6 +40,10 @@ flowchart LR
     style GR fill:#fff,stroke:#111,stroke-width:1px,stroke-dasharray: 6 4
     ```
 
-A prediction is only valuable if someone acts on it. A churn score of 0.87 means nothing to a marketing manager who needs to decide what to do about it. This lecture wraps the prediction API with an LLM — turning raw scores into natural-language explanations, suggested actions, and interactive Q&A.
+A prediction is only useful if someone acts on it. A churn score of 0.87 means nothing to a marketing manager who needs to decide what to do about it. This lecture wraps the prediction API with an LLM so raw scores become explanations, suggested actions, and interactive Q&A.
 
-Students build the *hybrid architecture* that defines modern AI products: a prediction engine with an intelligent conversational front-end. We face the hard problems head-on: hallucination risk, prompt injection, and LLM safety guardrails. This is the lecture that makes this course different from every other MLOps course.
+But an LLM in production is a new source of risk. It can fabricate facts, ignore instructions, and be manipulated through its input. We treat these as instances of the same problem we raised in L1: the system will produce wrong outputs, and the design must handle that. Guardrails, grounding in real data, fallback to the model's predicted values when the LLM output cannot be verified — these are the system-level answers to the LLM's tendency to sound confident while being wrong.
+
+We also touch on the broader ML security landscape beyond prompt injection: adversarial inputs designed to fool the model, poisoned training data, and model extraction attacks. These are not theoretical — they have been demonstrated against deployed systems.
+
+Students build the hybrid architecture that defines modern AI products: a prediction engine with a conversational front-end. The integration is straightforward. Making it safe enough to trust is not.

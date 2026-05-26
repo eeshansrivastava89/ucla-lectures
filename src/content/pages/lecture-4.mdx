@@ -6,26 +6,29 @@ icon: "04"
 sectionHeadings:
   concept: Concept
   topics: Topics
-  handsOn: "Hands-On"
+  handsOn: "What You'll Build"
   deliverable: Deliverable
-  bigTech: "How Big Tech Does This"
+  bigTech: "From Classroom to Full Scale"
 
 prevNav: "03 · Infrastructure & Orchestration"
 nextNav: "05 · LLM Interface + Safety + Value Realization"
 
 topics:
   - "Unit and integration testing for ML pipelines"
-  - "Data drift & concept drift — what changes and how to detect it"
-  - "Evidently — monitoring dashboards for model quality and data quality"
+  - "Data quality — is the input well-formed? Schema enforcement, missing values, type violations"
+  - "Data drift vs. concept drift — the data changed, or the meaning changed. Different problems, different responses."
+  - "Feedback loops — when your predictions change user behavior, which changes future training data"
+  - "Evidently — monitoring dashboards for data quality, drift, and model performance"
   - "Bias auditing — checking for disparate impact across protected groups"
+  - "Experimenting in production — A/B testing models with statistical rigor"
   - "GitHub Actions CI/CD — every push is validated automatically"
-handsOn: "Add pytest test suites, Evidently drift detection dashboards, bias audit reports for key segments, and a GitHub Actions workflow that runs on every push."
+handsOn: "Add pytest test suites, Evidently monitoring (data quality checks + drift detection + model performance), bias audit reports for key segments, a simple A/B test comparing two model versions, and a GitHub Actions workflow that runs on every push."
 tools:
   - pytest
   - Evidently AI
   - GitHub Actions
-deliverable: "Tested, monitored, CI/CD-enabled service with drift alerts and bias reports"
-bigTech: "Evidently → Arize / Fiddler with real-time drift detection and automated alerting. pytest → enterprise test suites with coverage gates. GitHub Actions → Jenkins / Buildkite with staging environments and canary deployments."
+deliverable: "Tested, monitored, CI/CD-enabled service with data quality checks, drift alerts, bias reports, and A/B test capability"
+bigTech: "Evidently → Arize / Fiddler with real-time drift detection and automated alerting. pytest → enterprise test suites with coverage gates. Feature flags → LaunchDarkly / Split for A/B experiments at scale. GitHub Actions → Jenkins / Buildkite with staging environments and canary deployments."
 ---
 
 ```mermaid
@@ -44,6 +47,8 @@ flowchart LR
     style CI fill:#fafafa,stroke:#111,stroke-width:1px
     ```
 
-A model that worked at deployment can silently fail as data shifts, pipelines break, or biases emerge. This lecture adds the *production safety layer*: tests that run automatically, monitoring that catches drift, and CI/CD that ensures every change is validated before reaching production.
+A model that worked at deployment can silently degrade. Data changes shape, pipelines break without warning, and biases that were invisible in training show up once real people are affected. This lecture adds the safety layer: tests, monitoring, and CI/CD.
 
-We also address bias auditing — fairness is a production requirement, not a nice-to-have. A deployed model affects real people, and MSBA students will be the ones asked "is this model fair?" in their first month on the job.
+We draw a clear line between three problems that often get lumped together. Data quality asks whether the incoming data is well-formed — schema violations, missing fields, and type errors are not drift, they are garbage in. Drift asks whether the distribution has changed — data drift means the inputs shifted, concept drift means the relationship between inputs and outputs shifted, and they require different responses. Feedback loops ask whether our predictions changed the world — if we recommend products and users click them, are we learning what users want, or are we learning what we recommended? This is the hardest problem to detect because nothing is obviously broken.
+
+We also address bias auditing and A/B testing. Fairness is not a nice-to-have — MSBA students will be the ones asked "is this model fair?" within their first month on the job. A/B testing is how you answer "is the new model actually better?" with evidence, not intuition.

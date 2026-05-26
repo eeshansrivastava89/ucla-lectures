@@ -1,30 +1,34 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
   body {
     font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", sans-serif;
-    background-color: #ffffff;
-    color: #111111;
+    background-color: var(--bg);
+    color: var(--fg);
   }
-  ::selection { background-color: #111; color: #fff; }
+  ::selection { background-color: var(--selection-bg); color: var(--selection-fg); }
 }
 
 @layer components {
-  .prose-course p { @apply text-[15px] leading-relaxed text-neutral-800 mb-3; }
-  .prose-course em { @apply not-italic text-black font-semibold; }
-  .prose-course strong { @apply font-semibold text-black; }
-  .prose-course a { @apply text-black underline underline-offset-4 decoration-neutral-400 hover:decoration-black transition-colors; }
+  .prose-course p { @apply text-[15px] leading-relaxed mb-3; color: var(--fg-secondary); }
+  .prose-course em { @apply not-italic font-semibold; color: var(--fg); }
+  .prose-course strong { @apply font-semibold; color: var(--fg); }
+  .prose-course a { @apply underline underline-offset-4 transition-colors; color: var(--fg); text-decoration-color: var(--link-decoration); }
+  .prose-course a:hover { color: var(--fg); text-decoration-color: var(--fg); }
 
-  .section-heading { @apply text-[11px] font-bold uppercase tracking-[0.2em] text-black mb-4; }
+  .section-heading { @apply text-[11px] font-bold uppercase tracking-[0.2em] mb-4; color: var(--fg); }
 
   .data-table { @apply w-full text-sm; }
-  .data-table thead th { @apply text-left text-[11px] uppercase tracking-wider text-black font-bold px-4 py-3 border-b-2 border-black; }
-  .data-table tbody td { @apply px-4 py-3 border-b border-neutral-200 text-neutral-800; }
-  .data-table tbody tr:hover { @apply bg-neutral-50; }
-  .data-table tbody tr:last-child td { @apply border-b-0; }
+  .data-table thead th { @apply text-left text-[11px] uppercase tracking-wider font-bold px-4 py-3; border-bottom: 2px solid var(--border-strong); color: var(--fg); }
+  .data-table tbody td { @apply px-4 py-3; border-bottom: 1px solid var(--border); color: var(--fg-secondary); }
+  .data-table tbody tr:hover { background-color: var(--bg-hover); }
+  .data-table tbody tr:last-child td { border-bottom: 0; }
 
-  .info-row { @apply border-b border-neutral-200 last:border-b-0; }
-  .info-label { @apply py-3 pr-6 text-black font-bold text-[11px] uppercase tracking-wider w-36 align-top; }
-  .info-value { @apply py-3 text-[15px] text-neutral-800; }
+  .info-row { border-bottom: 1px solid var(--border); }
+  .info-row:last-child { border-bottom: 0; }
+  .info-label { @apply py-3 pr-6 font-bold text-[11px] uppercase tracking-wider w-36 align-top; color: var(--fg); }
+  .info-value { @apply py-3 text-[15px]; color: var(--fg-secondary); }
 }

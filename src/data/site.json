@@ -8,7 +8,7 @@
   "nav": [
     { "href": "", "label": "Overview", "id": "overview" },
     { "type": "divider" },
-    { "href": "lectures/1", "label": "01 · Notebook → API", "id": "lecture-1" },
+    { "href": "lectures/1", "label": "01 · Notebook → Production", "id": "lecture-1" },
     { "href": "lectures/2", "label": "02 · Tracking & Selection", "id": "lecture-2" },
     { "href": "lectures/3", "label": "03 · Infrastructure", "id": "lecture-3" },
     { "href": "lectures/4", "label": "04 · Monitoring & CI/CD", "id": "lecture-4" },

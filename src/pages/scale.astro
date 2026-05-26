@@ -11,18 +11,18 @@ const th = d.tableHeaders;
 ---
 <Course title="FOSS → Scale — MLOps for Business Analytics" current="scale">
 
-  <p class="text-[11px] uppercase tracking-[0.2em] text-neutral-500 font-bold mb-2">{d.pageLabel}</p>
-  <h1 class="text-3xl font-bold tracking-tight text-black mb-2">{d.title}</h1>
-  <p class="text-neutral-700 font-medium mb-8">{d.subtitle}</p>
+  <p class="text-[11px] uppercase tracking-[0.2em] font-bold mb-2" style="color: var(--fg-muted);">{d.pageLabel}</p>
+  <h1 class="text-3xl font-bold tracking-tight mb-2" style="color: var(--fg);">{d.title}</h1>
+  <p class="font-medium mb-8" style="color: var(--fg-secondary);">{d.subtitle}</p>
 
   <section class="mb-10">
     <h2 class="section-heading">{h.principles}</h2>
     <div class="grid sm:grid-cols-3 gap-6">
       {d.principles.map((p: any) => (
         <div>
-          <span class="font-mono text-sm font-bold text-black">{p.num}</span>
-          <h3 class="text-sm font-bold text-black mt-1 mb-1">{p.title}</h3>
-          <p class="text-[13px] text-neutral-700">{p.desc}</p>
+          <span class="font-mono text-sm font-bold" style="color: var(--fg);">{p.num}</span>
+          <h3 class="text-sm font-bold mt-1 mb-1" style="color: var(--fg);">{p.title}</h3>
+          <p class="text-[13px]" style="color: var(--fg-secondary);">{p.desc}</p>
         </div>
       ))}
     </div>
@@ -33,7 +33,7 @@ const th = d.tableHeaders;
     <div class="prose-course mb-4">
       <Content />
     </div>
-    <div class="border-2 border-black rounded overflow-hidden">
+    <div class="rounded overflow-hidden" style="border: 2px solid var(--border-strong);">
       <table class="data-table">
         <thead><tr>
           {th.stackMap.map((col: any) => <th class={col.width || ''}>{col.label}</th>)}
@@ -41,9 +41,9 @@ const th = d.tableHeaders;
         <tbody>
           {d.stackMap.map((row: any) => (
             <tr>
-              <td class="font-mono font-bold text-black">{row.foss}</td>
-              <td class="text-[13px] text-neutral-700">{row.enterprise}</td>
-              <td class="font-mono text-neutral-500">{row.lecture}</td>
+              <td class="font-mono font-bold" style="color: var(--fg);">{row.foss}</td>
+              <td class="text-[13px]" style="color: var(--fg-secondary);">{row.enterprise}</td>
+              <td class="font-mono" style="color: var(--fg-faint);">{row.lecture}</td>
             </tr>
           ))}
         </tbody>
@@ -55,9 +55,9 @@ const th = d.tableHeaders;
     <h2 class="section-heading">{h.scaleChanges}</h2>
     <ul class="space-y-2">
       {d.scaleChanges.map((item: any) => (
-        <li class="flex items-start gap-3 text-[15px] text-neutral-800">
-          <span class="w-2 h-2 rounded-full bg-black mt-1.5 shrink-0"></span>
-          <strong class="text-black">{item.title}</strong> — {item.desc}
+        <li class="flex items-start gap-3 text-[15px]" style="color: var(--fg-secondary);">
+          <span class="w-2 h-2 rounded-full mt-1.5 shrink-0" style="background-color: var(--dot-color);"></span>
+          <strong style="color: var(--fg);">{item.title}</strong> — {item.desc}
         </li>
       ))}
     </ul>
@@ -65,11 +65,11 @@ const th = d.tableHeaders;
 
   <section class="mb-10">
     <h2 class="section-heading">{h.walkAway}</h2>
-    <div class="border-2 border-black bg-black rounded p-5">
+    <div class="rounded p-5" style="border: 2px solid var(--border-strong); background-color: var(--bg-card);">
       <ul class="space-y-2">
         {d.walkAway.map((item: string) => (
-          <li class="flex items-start gap-3 text-[15px] text-white">
-            <span class="w-2 h-2 rounded-full bg-white mt-1.5 shrink-0"></span>
+          <li class="flex items-start gap-3 text-[15px]" style="color: var(--bg);">
+            <span class="w-2 h-2 rounded-full mt-1.5 shrink-0" style="background-color: var(--bg); opacity: 0.8;"></span>
             {item}
           </li>
         ))}
@@ -77,9 +77,9 @@ const th = d.tableHeaders;
     </div>
   </section>
 
-  <div class="flex justify-between items-center pt-8 border-t-2 border-black">
-    <a href="lectures/5" class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">{d.prevNav}</a>
-    <a href="." class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">{d.nextNav}</a>
+  <div class="flex justify-between items-center pt-8" style="border-top: 2px solid var(--border-strong);">
+    <a href="lectures/5" class="text-sm font-semibold transition-colors" style="color: var(--fg-muted);" onmouseover="this.style.color='var(--fg)';" onmouseout="this.style.color='var(--fg-muted)';">{d.prevNav}</a>
+    <a href="." class="text-sm font-semibold transition-colors" style="color: var(--fg-muted);" onmouseover="this.style.color='var(--fg)';" onmouseout="this.style.color='var(--fg-muted)';">{d.nextNav}</a>
   </div>
 
 </Course>

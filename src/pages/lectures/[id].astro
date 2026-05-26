@@ -23,13 +23,32 @@ const next = index < lectures.length - 1 ? lectures[index + 1] : null;
 ---
 <Course title={`Lecture ${d.icon} — ${d.title}`} current={`lecture-${Astro.params.id}`}>
 
-  <p class="text-[11px] uppercase tracking-[0.2em] text-neutral-500 font-bold mb-2">Lecture {d.icon}</p>
-  <h1 class="text-3xl font-bold tracking-tight text-black mb-2">{d.title}</h1>
-  <p class="text-neutral-700 font-medium mb-8">{d.tagline}</p>
+  <p class="text-[11px] uppercase tracking-[0.2em] font-bold mb-2" style="color: var(--fg-muted);">Lecture {d.icon}</p>
+  <h1 class="text-3xl font-bold tracking-tight mb-2" style="color: var(--fg);">{d.title}</h1>
+  <p class="font-medium mb-8" style="color: var(--fg-secondary);">{d.tagline}</p>
+
+  <section class="mb-10">
+    <h2 class="section-heading">{h.deliverable}</h2>
+    <div class="rounded p-5" style="border: 2px solid var(--border-strong); background-color: var(--bg-card);">
+      <p class="text-[15px] font-semibold" style="color: var(--bg);">{d.deliverable}</p>
+    </div>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="section-heading">{h.handsOn}</h2>
+    <div class="rounded p-5" style="border: 2px solid var(--border-strong);">
+      <p class="text-[15px] mb-3" style="color: var(--fg-secondary);">{d.handsOn}</p>
+      <div class="flex flex-wrap gap-2">
+        {d.tools.map((t: string) => (
+          <span class="text-[12px] font-bold px-2.5 py-1 rounded" style="background-color: var(--nav-active-bg); color: var(--nav-active-fg);">{t}</span>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <section class="mb-10">
     <h2 class="section-heading">{h.concept}</h2>
-    <div class="prose-course max-w-2xl">
+    <div class="prose-course">
       <Content />
     </div>
   </section>
@@ -38,8 +57,8 @@ const next = index < lectures.length - 1 ? lectures[index + 1] : null;
     <h2 class="section-heading">{h.topics}</h2>
     <ul class="space-y-2">
       {d.topics.map((t: string) => (
-        <li class="flex items-start gap-3 text-[15px] text-neutral-800">
-          <span class="w-2 h-2 rounded-full bg-black mt-1.5 shrink-0"></span>
+        <li class="flex items-start gap-3 text-[15px]" style="color: var(--fg-secondary);">
+          <span class="w-2 h-2 rounded-full mt-1.5 shrink-0" style="background-color: var(--dot-color);"></span>
           <span>{t}</span>
         </li>
       ))}
@@ -47,39 +66,20 @@ const next = index < lectures.length - 1 ? lectures[index + 1] : null;
   </section>
 
   <section class="mb-10">
-    <h2 class="section-heading">{h.handsOn}</h2>
-    <div class="border-2 border-black rounded p-5">
-      <p class="text-[15px] text-neutral-800 mb-3">{d.handsOn}</p>
-      <div class="flex flex-wrap gap-2">
-        {d.tools.map((t: string) => (
-          <span class="text-[12px] font-bold bg-black text-white px-2.5 py-1 rounded">{t}</span>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="mb-10">
-    <h2 class="section-heading">{h.deliverable}</h2>
-    <div class="border-2 border-black bg-black rounded p-5">
-      <p class="text-[15px] text-white font-semibold">{d.deliverable}</p>
-    </div>
-  </section>
-
-  <section class="mb-10">
     <h2 class="section-heading">{h.bigTech}</h2>
-    <div class="border-2 border-neutral-300 rounded p-5 bg-neutral-50">
-      <p class="text-[15px] text-neutral-700">{d.bigTech}</p>
+    <div class="rounded p-5" style="border: 2px solid var(--border); background-color: var(--bg-inset);">
+      <p class="text-[15px]" style="color: var(--fg-secondary);">{d.bigTech}</p>
     </div>
   </section>
 
-  <div class="flex justify-between items-center pt-8 border-t-2 border-black">
+  <div class="flex justify-between items-center pt-8" style="border-top: 2px solid var(--border-strong);">
     {prev ? (
-      <a href={`lectures/${prev.id.replace('lecture-', '')}`} class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">← {prev.data.prevNav || `${prev.data.icon} · ${prev.data.title}`}</a>
+      <a href={`lectures/${prev.id.replace('lecture-', '')}`} class="text-sm font-semibold transition-colors" style="color: var(--fg-muted);" onmouseover="this.style.color='var(--fg)';" onmouseout="this.style.color='var(--fg-muted)';">← {prev.data.prevNav || `${prev.data.icon} · ${prev.data.title}`}</a>
     ) : <div />}
     {next ? (
-      <a href={`lectures/${next.id.replace('lecture-', '')}`} class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">{d.nextNav || `${next.data.icon} · ${next.data.title}`} →</a>
+      <a href={`lectures/${next.id.replace('lecture-', '')}`} class="text-sm font-semibold transition-colors" style="color: var(--fg-muted);" onmouseover="this.style.color='var(--fg)';" onmouseout="this.style.color='var(--fg-muted)';">{d.nextNav || `${next.data.icon} · ${next.data.title}`} →</a>
     ) : (
-      <a href="scale" class="text-sm text-neutral-700 hover:text-black font-semibold transition-colors">{d.nextNav} →</a>
+      <a href="scale" class="text-sm font-semibold transition-colors" style="color: var(--fg-muted);" onmouseover="this.style.color='var(--fg)';" onmouseout="this.style.color='var(--fg-muted)';">{d.nextNav} →</a>
     )}
   </div>
 

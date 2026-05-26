@@ -1,30 +1,32 @@
 ---
-title: "From Notebook to Prediction Service"
-tagline: "Ship your first ML endpoint"
+title: "From Notebook to Production Service"
+tagline: "A model is not a product"
 icon: "01"
 sectionHeadings:
   concept: Concept
   topics: Topics
-  handsOn: "Hands-On"
+  handsOn: "What You'll Build"
   deliverable: Deliverable
-  bigTech: "How Big Tech Does This"
+  bigTech: "From Classroom to Full Scale"
 
 prevNav: null
 nextNav: "02 · Experiment Tracking & Model Selection"
 
 topics:
-  - "Notebooks vs. production — the gap nobody teaches"
+  - "A model makes predictions. A system makes decisions. The gap between the two is where production work lives."
+  - "Notebooks vs. production code — why the gap exists and what it costs"
   - "Training a churn model (XGBoost) on real data"
   - "FastAPI — from Python function to HTTP endpoint"
   - "Testing your API — request, response, edge cases"
-handsOn: "Deploy a churn prediction endpoint that returns real predictions from a real model. Send a JSON request, get back a churn probability and risk tier."
+  - "What happens when the endpoint returns a wrong prediction?"
+handsOn: "Deploy a churn prediction endpoint that returns real predictions from a real model. Send a JSON request, get back a churn probability and risk tier. Then break it: send malformed input, missing fields, extreme values. What happens?"
 tools:
   - Python
   - XGBoost
   - FastAPI
   - Uvicorn
   - httpie
-deliverable: "Running prediction API with /predict endpoint"
+deliverable: "Running prediction API with /predict endpoint — tested for malformed input and edge cases"
 bigTech: "ML in a notebook → ML behind an API gateway with load balancers, rate limiting, and auth. Same pattern, 100× the infrastructure. At scale, add service mesh (Istio), circuit breakers, and distributed tracing."
 ---
 
@@ -40,6 +42,8 @@ flowchart LR
     style SVC fill:#fff,stroke:#111,stroke-width:2px
     ```
 
-Every ML project starts in a notebook. But a notebook is not a product — it's a prototype. In this lecture, we take a trained model and deploy it as a live prediction API that anyone can call.
+Every ML project starts in a notebook. A notebook is a fine place to explore data and train a model, but it is not a product. It has no API, no error handling, no way for anything else to call it. This lecture takes the trained model and deploys it as a live prediction endpoint — the first step from prototype to system.
 
-Students leave with a working endpoint and the mental model: *if it's not deployed, it doesn't exist.* This is the single most important shift from academic ML to production ML — and most courses never teach it.
+But "deploy the model" is the easy part. The harder question, and the one most courses skip: what happens when this endpoint returns the wrong prediction? Because it will. Every ML component in production makes mistakes — that is not exceptional, it is normal. The question is whether the system around it handles those mistakes or falls apart.
+
+Students leave with a working endpoint and a question they will spend the rest of the course answering: *you can call this API, but can you trust what it tells you?*

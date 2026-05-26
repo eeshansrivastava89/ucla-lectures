@@ -1,13 +1,13 @@
 ---
-title: "MLOps for Business Analytics"
-subtitle: "From Model to Product in 5 Lectures"
+title: "[DRAFT] AI/ML in Production"
+subtitle: "5-part hands-on lecture series on building, deploying and maintaining AI/ML models in production"
 program: "UCLA Anderson MSBA · Fall 2026"
 sectionHeadings:
   about: About
   schedule: Schedule
   assessment: Assessment
   domains: Domain Options
-  safety: "Safety & Responsible AI"
+  safety: "Safety, Failures & Fairness"
   logistics: Logistics
   references: References
   instructor: Instructor
@@ -16,18 +16,15 @@ copy:
   scheduleNote: "3-hour sessions: concept (50 min) → break (10 min) → build (120 min). Students leave each session with a new working capability."
   assessmentNote: "Project milestones, not exams. Each lecture has a deliverable — a checkpoint on the same running project. Students submit the same repo each time, showing additive progress."
   domainsNote: "The 5-lecture arc is domain-agnostic — any supervised ML problem with a public dataset and a natural \"ask questions\" story works. Churn is the default; others can be substituted."
-  safetyNote: "Deployed models affect real people. Three concerns integrated across lectures 4 and 5:"
+  safetyNote: "Models make mistakes. Systems deployed at scale affect real people. Three concerns woven through lectures 1 through 5:"
   defaultBadge: Default
 
 tableHeaders:
   schedule:
     - label: "#"
-      width: "w-10"
     - label: Lecture
     - label: Deliverable
-      width: "w-44"
     - label: Tools
-      width: "w-28"
   assessment:
     - label: Component
     - label: Weight
@@ -38,7 +35,7 @@ tableHeaders:
     - label: "LLM Interface"
 info:
   - label: Instructor
-    value: "Eeshan Srivastava · Sr. DS Manager, Starbucks · <a href='https://theasymptotic.substack.com'>Asymptotic</a>"
+    value: "Eeshan Srivastava · Sr. Data Science Manager, Starbucks · CS undergrad + MBA"
   - label: Format
     value: "5 lectures · 3 hrs each · build-along workshop"
   - label: Audience
@@ -51,11 +48,11 @@ info:
 assessment:
   - component: "Milestone 1: Working prediction API"
     weight: "20%"
-  - component: "Milestone 2: Experiment tracking + model selection"
+  - component: "Milestone 2: Experiment tracking + tradeoff-based model selection"
     weight: "15%"
   - component: "Milestone 3: Containerized service + automated pipeline"
     weight: "20%"
-  - component: "Milestone 4: Tests, monitoring, bias audit, CI/CD"
+  - component: "Milestone 4: Tests, data quality, drift, feedback loops, bias audit, A/B testing, CI/CD"
     weight: "20%"
   - component: "Milestone 5: Full product (API + LLM + safety)"
     weight: "25%"
@@ -77,12 +74,12 @@ domains:
     llmInterface: "Explain why · preference queries"
 
 safety:
-  - title: "Hallucination Risk"
-    description: "LLMs fabricate. Students build guardrails to ground responses in real data and validate against predictions."
-  - title: "Prompt Injection"
-    description: "Conversational interfaces are attack surfaces. Input validation, output sanitization, prompt hardening."
+  - title: "Wrong Predictions"
+    description: "Every ML component will be wrong sometimes. The system must handle this — guardrails, fallbacks, graceful degradation, human review."
+  - title: "Feedback Loops"
+    description: "Your predictions change user behavior, which changes future training data. A model can amplify its own biases over time without anyone noticing."
   - title: "Model Bias"
-    description: "Bias auditing across protected groups. Fairness is a production requirement, not advisory."
+    description: "Bias auditing across protected groups. Fairness is a production requirement, not a recommendation."
 
 logistics:
   - label: "Environment"
@@ -122,8 +119,10 @@ flowchart LR
     style LLM fill:#fff,stroke:#111,stroke-width:3px
     ```
 
-This course covers the production side of ML that most programs never teach: how to take a trained model and turn it into a deployed, monitored, explainable product. Each lecture teaches concepts through building — students start with a Jupyter notebook and end, five weeks later, with a shipped AI application.
+Most ML programs stop at the model. You learn to train, tune, evaluate — and then you're on your own when someone asks "can we deploy this?" This course picks up where those programs leave off.
 
-The course is organized around a single project that grows every week: *train → deploy → track → containerize → monitor → wrap with LLM*. By the end, students have built a hybrid ML + LLM architecture — a prediction engine with an intelligent conversational front-end.
+We treat the model as one component in a larger system. A churn prediction is not a product. A churn prediction wrapped in an API, tracked over time, containerized for deployment, monitored for drift, and fronted by an LLM that explains the result in plain English — *that* is a product. And it will still make wrong predictions, so the system needs to handle that too.
 
-**Every concept connects back to business decisions:** what does drift mean for KPIs, why does versioning matter for audits, how does an LLM turn a score into an action?
+The course runs on a single project that grows each week: *train → deploy → track → containerize → monitor → wrap with LLM*. By the end you've built a hybrid ML + LLM system — a prediction engine with a conversational interface. Each lecture adds one production capability to the same codebase.
+
+What does drift cost in lost revenue? Why would an auditor care about model versioning? How does an LLM turn a probability into an action someone can actually take? If you cannot answer these questions for your model, it is not in production.

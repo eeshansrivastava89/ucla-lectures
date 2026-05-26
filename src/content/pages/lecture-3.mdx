@@ -6,9 +6,9 @@ icon: "03"
 sectionHeadings:
   concept: Concept
   topics: Topics
-  handsOn: "Hands-On"
+  handsOn: "What You'll Build"
   deliverable: Deliverable
-  bigTech: "How Big Tech Does This"
+  bigTech: "From Classroom to Full Scale"
 
 prevNav: "02 · Experiment Tracking & Model Selection"
 nextNav: "04 · Monitoring, Testing, Bias & CI/CD"
@@ -37,6 +37,6 @@ flowchart LR
     style P fill:#fff,stroke:#111,stroke-width:3px
     ```
 
-"It works on my machine" is not a deployment strategy. This lecture containerizes the prediction service and adds orchestration — so the system runs on schedule, not just when someone remembers to retrain.
+"It works on my machine" is not a deployment strategy. Containers solve the environment problem: same code, same dependencies, same behavior everywhere. This lecture wraps the prediction service in a container and adds orchestration so the system retrains on a schedule instead of waiting for someone to remember.
 
-Students go from a fragile laptop setup to a *reproducible, automated pipeline*. Docker guarantees the same environment everywhere. Prefect guarantees the same process every time. Together, they turn a script into a system.
+Students go from a brittle laptop setup to something reproducible. Docker guarantees the environment. Prefect guarantees the process. Together they turn a script into a system that runs the same way every time, whether it is Tuesday at noon or Sunday at 3am.

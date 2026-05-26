@@ -1,29 +1,30 @@
 ---
 title: "Experiment Tracking & Model Selection"
-tagline: "Know what you shipped and why"
+tagline: "Accuracy is one quality among many"
 icon: "02"
 sectionHeadings:
   concept: Concept
   topics: Topics
-  handsOn: "Hands-On"
+  handsOn: "What You'll Build"
   deliverable: Deliverable
-  bigTech: "How Big Tech Does This"
+  bigTech: "From Classroom to Full Scale"
 
-prevNav: "01 · From Notebook to Prediction Service"
+prevNav: "01 · From Notebook to Production Service"
 nextNav: "03 · Infrastructure & Orchestration"
 
 topics:
   - "Why experiment tracking matters for business decisions and regulatory audits"
   - "MLflow — tracking experiments, parameters, and metrics"
-  - "Model comparison — accuracy, latency, cost, fairness (multi-objective selection)"
+  - "Quality beyond accuracy: latency, inference cost, model size, fairness, explainability"
+  - "Multi-objective model selection — navigating tradeoffs when no model wins on every dimension"
   - "Model registry — from 'best model in my notebook' to 'model v2.1 in the registry'"
-handsOn: "Track 5+ experiment runs with MLflow, compare models on accuracy and speed, register the best one, and update the API to load it automatically from the registry."
+handsOn: "Track 5+ experiment runs with MLflow, compare models on at least three quality dimensions (accuracy, latency, cost or model size), choose the model that best fits production constraints, register it, and update the API to load it automatically from the registry."
 tools:
   - MLflow
   - scikit-learn
   - pandas
-deliverable: "API now loads the best model from MLflow registry instead of hardcoded file"
-bigTech: "MLflow (local) → Vertex AI Experiments / SageMaker Experiments / Weights & Biases. Same tracking, managed infrastructure, team collaboration, and enterprise audit trails."
+deliverable: "API loads the best production-fit model from MLflow registry (with a written justification for why this model over the alternatives)"
+bigTech: "MLflow (local) → Vertex AI Experiments / SageMaker Experiments / Weights & Biases. Same tracking, managed infrastructure, team collaboration, and enterprise audit trails. The tradeoff analysis is the same — it just happens with more stakeholders and tighter compliance requirements."
 ---
 
 ```mermaid
@@ -44,6 +45,8 @@ flowchart LR
     style MLflow fill:#fff,stroke:#111,stroke-width:2px
     ```
 
-When you train one model, you remember what you did. When you train fifty, you don't. This lecture introduces experiment tracking — the production habit that separates responsible ML from ad-hoc ML.
+When you train one model, you remember what you did. When you train fifty, you don't. This lecture introduces experiment tracking — the discipline that makes it possible to reproduce, audit, and improve your work over time.
 
-Students track experiments, compare models on multiple dimensions, and register the best one. They swap their hardcoded model for a *versioned, auditable* one. This is also where we introduce the idea that "best" is not just accuracy — latency, cost, and fairness all matter.
+But tracking is only half the problem. The other half is deciding which model goes to production. In a notebook, you pick the one with the highest accuracy. In production, accuracy is one quality among many: a model that is 3% less accurate but 10× faster and costs a tenth to run may be the right choice. Two models with identical accuracy can have different fairness profiles across user segments. The right model for production fits the constraints — and those constraints come from the business, not the notebook.
+
+Students track experiments, compare models across multiple dimensions, and write a justification for which model to ship. Going from "I built a model" to "I shipped the right model for these constraints" is the real shift.
