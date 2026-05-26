@@ -1,7 +1,12 @@
 ---
-title: "[DRAFT] UCLA MSBA: AI/ML in Production"
+title: "[DRAFT] AI/ML in Production"
 subtitle: "5-part hands-on lecture series on building, deploying and maintaining AI/ML models in production"
 program: "UCLA Anderson MSBA · Fall 2026"
+
+# ── Page title & subtitle (rendered at top) ──
+# title, subtitle, program are used above
+
+# ── Section headings (maps internal keys to display labels) ──
 sectionHeadings:
   about: About
   schedule: Schedule
@@ -12,6 +17,23 @@ sectionHeadings:
   references: References
   instructor: Instructor
 
+# ── 1. Info table (Instructor, Format, Audience, etc.) ──
+info:
+  - label: Instructor
+    value: "Eeshan Srivastava · Sr. Data Science Manager, Starbucks · CS undergrad + MBA"
+  - label: Format
+    value: "5 lectures · 3 hrs each · build-along workshop"
+  - label: Audience
+    value: "MSBA — you know how to build a model; this course teaches you to make it work in the real world"
+  - label: Project
+    value: "Deploy an AI product end-to-end: prediction API → tracking → containers → monitoring → LLM interface"
+  - label: Infra
+    value: "Your laptop + GitHub Codespaces. Zero cloud spend. Starter repo provided. <a href='scale'>Stack details →</a>"
+
+# ── 2. About (MDX body below frontmatter) ──
+# no frontmatter data — rendered from MDX body
+
+# ── 3. Schedule ──
 copy:
   scheduleNote: "3-hour sessions: concept (50 min) → break (10 min) → build (120 min). Students leave each session with a new working capability."
   assessmentNote: "Project milestones, not exams. Each lecture has a deliverable — a checkpoint on the same running project. Students submit the same repo each time, showing additive progress."
@@ -33,18 +55,8 @@ tableHeaders:
     - label: Domain
     - label: "ML Task"
     - label: "LLM Interface"
-info:
-  - label: Instructor
-    value: "Eeshan Srivastava · Sr. Data Science Manager, Starbucks · CS undergrad + MBA"
-  - label: Format
-    value: "5 lectures · 3 hrs each · build-along workshop"
-  - label: Audience
-    value: "MSBA — you know how to build a model; this course teaches you to make it work in the real world"
-  - label: Project
-    value: "Deploy an AI product end-to-end: prediction API → tracking → containers → monitoring → LLM interface"
-  - label: Infra
-    value: "Your laptop + GitHub Codespaces. Zero cloud spend. Starter repo provided. <a href='scale'>Stack details →</a>"
 
+# ── 4. Assessment ──
 assessment:
   - component: "Milestone 1: Working prediction API"
     weight: "20%"
@@ -58,6 +70,7 @@ assessment:
     weight: "25%"
     highlight: true
 
+# ── 5. Domains ──
 domains:
   - name: "Customer Churn"
     mlTask: "Predict which customers leave"
@@ -73,6 +86,7 @@ domains:
     mlTask: "Recommend items to users"
     llmInterface: "Explain why · preference queries"
 
+# ── 6. Safety ──
 safety:
   - title: "Wrong Predictions"
     description: "Every ML component will be wrong sometimes. The system must handle this — guardrails, fallbacks, graceful degradation, human review."
@@ -81,6 +95,7 @@ safety:
   - title: "Model Bias"
     description: "Bias auditing across protected groups. Fairness is a production requirement, not a recommendation."
 
+# ── 7. Logistics ──
 logistics:
   - label: "Environment"
     value: "Python, Docker Desktop, terminal. GitHub Codespaces (free tier) as fallback. Starter repo — fork and build forward."
@@ -91,6 +106,7 @@ logistics:
   - label: "AI Policy"
     value: "AI tools may be used freely — learning to work with AI is itself a course objective. All submitted code must be your own. Disclose form and extent of AI assistance."
 
+# ── 8. References ──
 references:
   - title: "DataTalksClub MLOps Zoomcamp"
     url: "https://github.com/DataTalksClub/mlops-zoomcamp"
@@ -105,6 +121,7 @@ references:
     url: "https://www.deeplearning.ai/courses/machine-learning-in-production/"
     note: "Andrew Ng · deployment-first"
 
+# ── 9. Instructor ──
 instructor: "Eeshan Srivastava"
 instructorBio: "Senior Data Science Manager at Starbucks. Deploying marketing measurement systems (MMM, incrementality, experimentation) at nine-figure scale. Previously at Overstock.com. MS in Business Analytics, Case Western (Weatherhead 5 Under 35). Speaker at UCLA Anderson and company-wide AI workshops (200+). Writes about local AI and MLOps on [Asymptotic](https://theasymptotic.substack.com)."
 ---
