@@ -13,16 +13,6 @@ const th = d.tableHeaders;
 const lectures = (await getCollection('pages'))
   .filter((p: any) => p.id.startsWith('lecture-'))
   .sort((a: any, b: any) => a.id.localeCompare(b.id));
-
-const base = Astro.base ?? '';
-function resolve(path: string) {
-  if (!path || path === '/') return base || '/';
-  return `${base}/${path}`.replace(/\/+/g, '/');
-}
-function rewriteBase(html: string) {
-  if (!base) return html;
-  return html.replace(/href='(\/[^']*)'/g, `href='${base}$1'`).replace(/href='([a-z][^']*)'/g, `href='${base}/$1'`);
-}
 ---
 <Course title={`${d.title} — ${d.program}`} current="overview">
 
@@ -35,7 +25,7 @@ function rewriteBase(html: string) {
         {d.info.map((row: any) => (
           <tr class="info-row">
             <td class="info-label">{row.label}</td>
-            <td class="info-value" set:html={rewriteBase(row.value)} />
+            <td class="info-value" set:html={row.value} />
           </tr>
         ))}
       </tbody>
@@ -64,7 +54,7 @@ function rewriteBase(html: string) {
               <tr>
                 <td class="font-mono font-bold text-black">{l.data.icon}</td>
                 <td>
-                  <a href={resolve(`lectures/${id}`)} class="text-black hover:text-neutral-600 transition-colors font-semibold">{l.data.title}</a>
+                  <a href={`lectures/${id}`} class="text-black hover:text-neutral-600 transition-colors font-semibold">{l.data.title}</a>
                   <p class="text-[13px] text-neutral-600 mt-0.5">{l.data.tagline}</p>
                 </td>
                 <td class="text-[13px] text-neutral-700">{l.data.deliverable}</td>
@@ -141,7 +131,7 @@ function rewriteBase(html: string) {
         {d.logistics.map((row: any) => (
           <tr class="info-row">
             <td class="info-label">{row.label}</td>
-            <td class="info-value" set:html={rewriteBase(row.value)} />
+            <td class="info-value" set:html={row.value} />
           </tr>
         ))}
       </tbody>
@@ -160,7 +150,7 @@ function rewriteBase(html: string) {
   <section>
     <h2 class="section-heading">{h.instructor}</h2>
     <div class="prose-course">
-      <p><strong>{d.instructor}</strong> — <Fragment set:html={rewriteBase(d.instructorBio)} /></p>
+      <p><strong>{d.instructor}</strong> — <Fragment set:html={d.instructorBio} /></p>
     </div>
   </section>
 
