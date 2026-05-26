@@ -4,15 +4,18 @@ tagline: "From prediction to conversation"
 icon: "05"
 
 sectionHeadings:
+  deliverable: Deliverable
+  handsOn: "What You'll Build"
   concept: Concept
   topics: Topics
-  handsOn: "What You'll Build"
-  deliverable: Deliverable
   bigTech: "From Classroom to Full Scale"
 
-prevNav: "04 · Monitoring, Testing, Bias & CI/CD"
-nextNav: "FOSS → Scale"
-
+deliverable: "Full product — prediction API + LLM conversational interface + safety guardrails"
+handsOn: "Build a conversational interface that explains churn predictions in plain English, suggests retention actions based on the data, and answers follow-up questions about customer segments and trends. Add input sanitization and output grounding so the LLM cannot fabricate predictions that contradict the model."
+tools:
+  - "Claude API / OpenAI API"
+  - "Ollama (local)"
+  - LangChain
 topics:
   - "LLM as the last mile — pattern: prediction API → LLM → user"
   - "Building an LLM interface (API-first with Claude/OpenAI — the industry standard)"
@@ -21,13 +24,10 @@ topics:
   - "Safety — hallucination guardrails, prompt injection, output sanitization, fallback to predicted values"
   - "Security beyond the LLM — adversarial inputs, data poisoning, model extraction. The attack surface is larger than just the prompt."
   - "Value realization — connecting ML output to business action"
-handsOn: "Build a conversational interface that explains churn predictions in plain English, suggests retention actions based on the data, and answers follow-up questions about customer segments and trends. Add input sanitization and output grounding so the LLM cannot fabricate predictions that contradict the model."
-tools:
-  - "Claude API / OpenAI API"
-  - "Ollama (local)"
-  - LangChain
-deliverable: "Full product — prediction API + LLM conversational interface + safety guardrails"
 bigTech: "Single LLM call → RAG pipeline with vector DB (Pinecone/Weaviate), guardrails service, A/B tested prompts, model routing, cost controls, and content safety filters. Same architecture, enterprise reliability."
+
+prevNav: "04 · Monitoring, Testing, Bias & CI/CD"
+nextNav: "FOSS → Scale"
 ---
 
 ```mermaid

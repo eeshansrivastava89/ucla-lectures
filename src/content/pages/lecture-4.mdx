@@ -4,15 +4,18 @@ tagline: "Know when it breaks before your users do"
 icon: "04"
 
 sectionHeadings:
+  deliverable: Deliverable
+  handsOn: "What You'll Build"
   concept: Concept
   topics: Topics
-  handsOn: "What You'll Build"
-  deliverable: Deliverable
   bigTech: "From Classroom to Full Scale"
 
-prevNav: "03 · Infrastructure & Orchestration"
-nextNav: "05 · LLM Interface + Safety + Value Realization"
-
+deliverable: "Tested, monitored, CI/CD-enabled service with data quality checks, drift alerts, bias reports, and A/B test capability"
+handsOn: "Add pytest test suites, Evidently monitoring (data quality checks + drift detection + model performance), bias audit reports for key segments, a simple A/B test comparing two model versions, and a GitHub Actions workflow that runs on every push."
+tools:
+  - pytest
+  - Evidently AI
+  - GitHub Actions
 topics:
   - "Unit and integration testing for ML pipelines"
   - "Data quality — is the input well-formed? Schema enforcement, missing values, type violations"
@@ -22,13 +25,10 @@ topics:
   - "Bias auditing — checking for disparate impact across protected groups"
   - "Experimenting in production — A/B testing models with statistical rigor"
   - "GitHub Actions CI/CD — every push is validated automatically"
-handsOn: "Add pytest test suites, Evidently monitoring (data quality checks + drift detection + model performance), bias audit reports for key segments, a simple A/B test comparing two model versions, and a GitHub Actions workflow that runs on every push."
-tools:
-  - pytest
-  - Evidently AI
-  - GitHub Actions
-deliverable: "Tested, monitored, CI/CD-enabled service with data quality checks, drift alerts, bias reports, and A/B test capability"
 bigTech: "Evidently → Arize / Fiddler with real-time drift detection and automated alerting. pytest → enterprise test suites with coverage gates. Feature flags → LaunchDarkly / Split for A/B experiments at scale. GitHub Actions → Jenkins / Buildkite with staging environments and canary deployments."
+
+prevNav: "03 · Infrastructure & Orchestration"
+nextNav: "05 · LLM Interface + Safety + Value Realization"
 ---
 
 ```mermaid

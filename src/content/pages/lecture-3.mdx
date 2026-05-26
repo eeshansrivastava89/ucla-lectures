@@ -4,27 +4,27 @@ tagline: "From laptop to container"
 icon: "03"
 
 sectionHeadings:
+  deliverable: Deliverable
+  handsOn: "What You'll Build"
   concept: Concept
   topics: Topics
-  handsOn: "What You'll Build"
-  deliverable: Deliverable
   bigTech: "From Classroom to Full Scale"
 
-prevNav: "02 · Experiment Tracking & Model Selection"
-nextNav: "04 · Monitoring, Testing, Bias & CI/CD"
-
-topics:
-  - "Docker — why containers exist and what problem they solve"
-  - "Containerizing the FastAPI service"
-  - "Pipeline orchestration — Prefect for automated retraining"
-  - "Environment reproducibility — from requirements.txt to Dockerfile"
+deliverable: "Containerized service + automated retraining pipeline"
 handsOn: "Dockerize the entire service (API + MLflow), add a Prefect pipeline that retrains and re-registers the model on a schedule, and verify it all runs from a single `docker compose up`."
 tools:
   - Docker
   - Docker Compose
   - Prefect
-deliverable: "Containerized service + automated retraining pipeline"
+topics:
+  - "Docker — why containers exist and what problem they solve"
+  - "Containerizing the FastAPI service"
+  - "Pipeline orchestration — Prefect for automated retraining"
+  - "Environment reproducibility — from requirements.txt to Dockerfile"
 bigTech: "Docker → Kubernetes on EKS/GKE with HPA autoscaling. Prefect → Airflow at scale with DAG versioning, SLA monitoring, and cross-team dependency management."
+
+prevNav: "02 · Experiment Tracking & Model Selection"
+nextNav: "04 · Monitoring, Testing, Bias & CI/CD"
 ---
 
 ```mermaid

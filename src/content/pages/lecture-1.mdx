@@ -3,22 +3,13 @@ title: "From Notebook to Production Service"
 tagline: "A model is not a product"
 icon: "01"
 sectionHeadings:
+  deliverable: Deliverable
+  handsOn: "What You'll Build"
   concept: Concept
   topics: Topics
-  handsOn: "What You'll Build"
-  deliverable: Deliverable
   bigTech: "From Classroom to Full Scale"
 
-prevNav: null
-nextNav: "02 · Experiment Tracking & Model Selection"
-
-topics:
-  - "A model makes predictions. A system makes decisions. The gap between the two is where production work lives."
-  - "Notebooks vs. production code — why the gap exists and what it costs"
-  - "Training a churn model (XGBoost) on real data"
-  - "FastAPI — from Python function to HTTP endpoint"
-  - "Testing your API — request, response, edge cases"
-  - "What happens when the endpoint returns a wrong prediction?"
+deliverable: "Running prediction API with /predict endpoint — tested for malformed input and edge cases"
 handsOn: "Deploy a churn prediction endpoint that returns real predictions from a real model. Send a JSON request, get back a churn probability and risk tier. Then break it: send malformed input, missing fields, extreme values. What happens?"
 tools:
   - Python
@@ -26,8 +17,17 @@ tools:
   - FastAPI
   - Uvicorn
   - httpie
-deliverable: "Running prediction API with /predict endpoint — tested for malformed input and edge cases"
+topics:
+  - "A model makes predictions. A system makes decisions. The gap between the two is where production work lives."
+  - "Notebooks vs. production code — why the gap exists and what it costs"
+  - "Training a churn model (XGBoost) on real data"
+  - "FastAPI — from Python function to HTTP endpoint"
+  - "Testing your API — request, response, edge cases"
+  - "What happens when the endpoint returns a wrong prediction?"
 bigTech: "ML in a notebook → ML behind an API gateway with load balancers, rate limiting, and auth. Same pattern, 100× the infrastructure. At scale, add service mesh (Istio), circuit breakers, and distributed tracing."
+
+prevNav: null
+nextNav: "02 · Experiment Tracking & Model Selection"
 ---
 
 ```mermaid
