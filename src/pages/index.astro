@@ -14,7 +14,7 @@ const lectures = (await getCollection('pages'))
   .filter((p: any) => p.id.startsWith('lecture-'))
   .sort((a: any, b: any) => a.id.localeCompare(b.id));
 ---
-<Course title={`${d.title} — ${d.program}`} current="overview">
+<Course title={`${d.title} — ${d.program}`} current="overview" prevUrl="scale" nextUrl="lectures/1">
 
   <h1 class="text-4xl font-bold tracking-tight mb-2" style="color: var(--fg);">{d.title}</h1>
   <p class="text-lg font-medium mb-10" style="color: var(--fg-secondary);">{d.subtitle}</p>
@@ -69,7 +69,7 @@ const lectures = (await getCollection('pages'))
 
   <section class="mb-10">
     <h2 class="section-heading">{h.assessment}</h2>
-    <div class="prose-course"><p style="color: var(--fg-secondary);">{c.assessmentNote}</p></div>
+    <p class="text-sm mb-3 prose-course" style="color: var(--fg-secondary);">{c.assessmentNote}</p>
     <div class="rounded overflow-hidden mt-3" style="border: 2px solid var(--border-strong);">
       <table class="data-table">
         <thead><tr>
@@ -88,43 +88,6 @@ const lectures = (await getCollection('pages'))
   </section>
 
   <section class="mb-10">
-    <h2 class="section-heading">{h.domains}</h2>
-    <div class="prose-course"><p style="color: var(--fg-secondary);">{c.domainsNote}</p></div>
-    <div class="rounded overflow-hidden mt-3" style="border: 2px solid var(--border-strong);">
-      <table class="data-table">
-        <thead><tr>
-          {th.domains.map((col: any) => <th>{col.label}</th>)}
-        </tr></thead>
-        <tbody>
-          {d.domains.map((row: any) => (
-            <tr class:list={[row.primary && 'font-semibold']} style={row.primary ? { color: 'var(--fg)' } : { color: 'var(--fg-secondary)' }}>
-              <td>
-                {row.name}
-                {row.primary && <span class="ml-1 text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded font-bold" style="background-color: var(--nav-active-bg); color: var(--nav-active-fg);">{c.defaultBadge}</span>}
-              </td>
-              <td class="text-[13px]" style="color: var(--fg-secondary);">{row.mlTask}</td>
-              <td class="text-[13px]" style="color: var(--fg-secondary);">{row.llmInterface}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section class="mb-10">
-    <h2 class="section-heading">{h.safety}</h2>
-    <div class="prose-course mb-3"><p style="color: var(--fg-secondary);">{c.safetyNote}</p></div>
-    <div class="grid sm:grid-cols-3 gap-4">
-      {d.safety.map((item: any) => (
-        <div class="rounded p-4" style="border: 2px solid var(--border-strong);">
-          <h3 class="text-sm font-bold mb-1" style="color: var(--fg);">{item.title}</h3>
-          <p class="text-[13px]" style="color: var(--fg-secondary);">{item.description}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <section class="mb-10">
     <h2 class="section-heading">{h.logistics}</h2>
     <table class="info-table text-sm w-full">
       <tbody>
@@ -136,6 +99,45 @@ const lectures = (await getCollection('pages'))
         ))}
       </tbody>
     </table>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="section-heading">{h.syllabus}</h2>
+
+    <div class="mb-6">
+      <h3 class="text-sm font-bold mb-2" style="color: var(--fg);">{h.grading}</h3>
+      <div class="rounded overflow-hidden" style="border: 2px solid var(--border-strong);">
+        <table class="data-table">
+          <thead><tr>
+            <th>Component</th>
+            <th class="w-16 text-right">Weight</th>
+          </tr></thead>
+          <tbody>
+            {d.grading.map((row: any) => (
+              <tr>
+                <td style="color: var(--fg-secondary);">{row.component}{row.note && <span class="block text-[13px] mt-0.5" style="color: var(--fg-muted);">{row.note}</span>}</td>
+                <td class="text-right font-mono font-bold" style="color: var(--fg);">{row.weight}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="mb-6">
+      <h3 class="text-sm font-bold mb-2" style="color: var(--fg);">{h.participation}</h3>
+      <p class="text-[15px]" style="color: var(--fg-secondary);">{d.participation[0].text}</p>
+    </div>
+
+    <div class="mb-6">
+      <h3 class="text-sm font-bold mb-2" style="color: var(--fg);">{h.diversity}</h3>
+      <p class="text-[15px]" style="color: var(--fg-secondary);">{d.diversity[0].text}</p>
+    </div>
+
+    <div class="mb-6">
+      <h3 class="text-sm font-bold mb-2" style="color: var(--fg);">{h.accommodations}</h3>
+      <p class="text-[15px]" style="color: var(--fg-secondary);">{d.accommodations[0].text}</p>
+    </div>
   </section>
 
   <section class="mb-10">

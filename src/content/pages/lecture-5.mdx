@@ -18,13 +18,13 @@ tools:
   - LangChain
 topics:
   - "LLM as the last mile — pattern: prediction API → LLM → user"
-  - "Building an LLM interface (API-first with Claude/OpenAI — the industry standard)"
-  - "Local alternative — Ollama for free, offline exploration (doesn't scale, but great for learning)"
-  - "RAG over churn data — grounding the LLM in real numbers, not fabrication"
-  - "Safety — hallucination guardrails, prompt injection, output sanitization, fallback to predicted values"
+  - "Building an LLM interface, API-first with Claude or OpenAI — this is how production teams do it"
+  - "Local alternative — Ollama for free, offline exploration. Doesn't scale, great for learning."
+  - "RAG — retrieving real data so the LLM stays grounded in facts, not fabrication"
+  - "Safety — hallucination guardrails, prompt injection, output sanitization, fallback to predicted values when the LLM output can't be verified"
   - "Security beyond the LLM — adversarial inputs, data poisoning, model extraction. The attack surface is larger than just the prompt."
   - "Value realization — connecting ML output to business action"
-bigTech: "Single LLM call → RAG pipeline with vector DB (Pinecone/Weaviate), guardrails service, A/B tested prompts, model routing, cost controls, and content safety filters. Same architecture, enterprise reliability."
+bigTech: "A single API call becomes a RAG pipeline with a vector database (Pinecone or Weaviate), a guardrails service, A/B tested prompts, model routing across multiple LLMs, cost controls, and content safety filters. Same architecture, more moving parts."
 
 prevNav: "04 · Monitoring, Testing, Bias & CI/CD"
 nextNav: "FOSS → Scale"
@@ -40,10 +40,12 @@ flowchart LR
     style GR fill:#fff,stroke:#111,stroke-width:1px,stroke-dasharray: 6 4
     ```
 
-A prediction is only useful if someone acts on it. A churn score of 0.87 means nothing to a marketing manager who needs to decide what to do about it. This lecture wraps the prediction API with an LLM so raw scores become explanations, suggested actions, and interactive Q&A.
+A prediction is only useful if someone acts on it. A churn score of 0.87 means nothing to a marketing manager who needs to decide what to do about it. This lecture wraps the prediction API with an LLM so raw scores become explanations and suggested actions.
 
-But an LLM in production is a new source of risk. It can fabricate facts, ignore instructions, and be manipulated through its input. We treat these as instances of the same problem we raised in L1: the system will produce wrong outputs, and the design must handle that. Guardrails, grounding in real data, fallback to the model's predicted values when the LLM output cannot be verified — these are the system-level answers to the LLM's tendency to sound confident while being wrong.
+This is the lecture that makes the course different from most MLOps curricula — <span class="accent">you are not just deploying a model, you are building the full product architecture</span> used by teams shipping AI features in production.
 
-We also touch on the broader ML security landscape beyond prompt injection: adversarial inputs designed to fool the model, poisoned training data, and model extraction attacks. These are not theoretical — they have been demonstrated against deployed systems.
+But an LLM in production is a new source of risk. It can fabricate facts, ignore instructions, and be manipulated through its input. These are not separate problems — they are instances of the same problem we raised in Lecture 1: <span class="accent">the system will produce wrong outputs, and the design must handle that.</span> Guardrails, grounding in real data via RAG, and fallback to the model's predicted values when the LLM output cannot be verified — these are the system-level answers.
 
-Students build the hybrid architecture that defines modern AI products: a prediction engine with a conversational front-end. The integration is straightforward. Making it safe enough to trust is not.
+We also touch on the broader ML security landscape beyond prompt injection: adversarial inputs designed to fool the model, poisoned training data, and model extraction attacks. These have been demonstrated against deployed systems. They are not theoretical.
+
+By the end, you have built an AI product end-to-end. A prediction engine with a conversational front-end. <span class="accent">The integration is straightforward. Making it safe enough to trust is the real work.</span>

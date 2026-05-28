@@ -21,7 +21,7 @@ const h = d.sectionHeadings;
 const prev = index > 0 ? lectures[index - 1] : null;
 const next = index < lectures.length - 1 ? lectures[index + 1] : null;
 ---
-<Course title={`Lecture ${d.icon} — ${d.title}`} current={`lecture-${Astro.params.id}`}>
+<Course title={`Lecture ${d.icon} — ${d.title}`} current={`lecture-${Astro.params.id}`} prevUrl={index > 0 ? `lectures/${lectures[index - 1].id.replace('lecture-', '')}` : '.'} nextUrl={index < lectures.length - 1 ? `lectures/${lectures[index + 1].id.replace('lecture-', '')}` : 'scale'}>
 
   <p class="text-[11px] uppercase tracking-[0.2em] font-bold mb-2" style="color: var(--fg-muted);">Lecture {d.icon}</p>
   <h1 class="text-3xl font-bold tracking-tight mb-2" style="color: var(--fg);">{d.title}</h1>

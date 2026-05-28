@@ -1,23 +1,26 @@
 ---
-title: "[DRAFT] AI/ML in Production"
-subtitle: "5-part hands-on lecture series on building, deploying and maintaining AI/ML models in production"
+title: "AI/ML in Production"
+subtitle: "Build, deploy, and maintain an ML product over 5 weeks — prediction API through LLM interface"
 program: "UCLA Anderson MSBA · Fall 2026"
 
-# ── Page title & subtitle (rendered at top) ──
-# title, subtitle, program are used above
-
-# ── Section headings (maps internal keys to display labels) ──
 sectionHeadings:
-  about: About
-  schedule: Schedule
-  assessment: Assessment
-  domains: Domain Options
-  safety: "Safety, Failures & Fairness"
-  logistics: Logistics
-  references: References
-  instructor: Instructor
+  about: "Course Description"
+  whoFor: "Who This Course Is For"
+  topicsCovered: "Topics Covered"
+  examples: "Examples & Case Studies"
+  project: "Course Project"
+  learningOutcomes: "Learning Outcomes"
+  schedule: "Schedule"
+  assessment: "Assessment"
+  logistics: "Logistics"
+  syllabus: "Syllabus & Policies"
+  grading: "Grading"
+  participation: "Participation"
+  diversity: "Diversity & Inclusion"
+  accommodations: "Accommodations"
+  references: "References"
+  instructor: "Instructor"
 
-# ── 1. Info table (Instructor, Format, Audience, etc.) ──
 info:
   - label: Instructor
     value: "Eeshan Srivastava · Sr. Data Science Manager, Starbucks · CS undergrad + MBA"
@@ -30,16 +33,9 @@ info:
   - label: Infra
     value: "Your laptop + GitHub Codespaces. Zero cloud spend. Starter repo provided. <a href='scale'>Stack details →</a>"
 
-# ── 2. About (MDX body below frontmatter) ──
-# no frontmatter data — rendered from MDX body
-
-# ── 3. Schedule ──
 copy:
-  scheduleNote: "3-hour sessions: concept (50 min) → break (10 min) → build (120 min). Students leave each session with a new working capability."
-  assessmentNote: "Project milestones, not exams. Each lecture has a deliverable — a checkpoint on the same running project. Students submit the same repo each time, showing additive progress."
-  domainsNote: "The 5-lecture arc is domain-agnostic — any supervised ML problem with a public dataset and a natural \"ask questions\" story works. Churn is the default; others can be substituted."
-  safetyNote: "Models make mistakes. Systems deployed at scale affect real people. Three concerns woven through lectures 1 through 5:"
-  defaultBadge: Default
+  scheduleNote: "Each session runs 3 hours: concept (50 min) → break (10 min) → build (120 min). You leave with a new working capability each week."
+  assessmentNote: "Project milestones, not exams. Each lecture has a checkpoint on the same codebase. You submit the same repo each week, showing additive progress. The final deliverable is a working product."
 
 tableHeaders:
   schedule:
@@ -51,12 +47,7 @@ tableHeaders:
     - label: Component
     - label: Weight
       width: "w-16 text-right"
-  domains:
-    - label: Domain
-    - label: "ML Task"
-    - label: "LLM Interface"
 
-# ── 4. Assessment ──
 assessment:
   - component: "Milestone 1: Working prediction API"
     weight: "20%"
@@ -70,32 +61,20 @@ assessment:
     weight: "25%"
     highlight: true
 
-# ── 5. Domains ──
-domains:
-  - name: "Customer Churn"
-    mlTask: "Predict which customers leave"
-    llmInterface: "Explain why · suggest retention"
-    primary: true
-  - name: "Fraud Detection"
-    mlTask: "Flag suspicious transactions"
-    llmInterface: "Explain risk score & evidence"
-  - name: "Demand Forecasting"
-    mlTask: "Predict product demand"
-    llmInterface: "Answer driver questions"
-  - name: "Recommendation"
-    mlTask: "Recommend items to users"
-    llmInterface: "Explain why · preference queries"
+grading:
+  - component: "Project milestones (5 deliverables)"
+    weight: "100%"
+    note: "Each milestone is graded pass/fail against a public rubric. You may resubmit each milestone once."
 
-# ── 6. Safety ──
-safety:
-  - title: "Wrong Predictions"
-    description: "Every ML component will be wrong sometimes. The system must handle this — guardrails, fallbacks, graceful degradation, human review."
-  - title: "Feedback Loops"
-    description: "Your predictions change user behavior, which changes future training data. A model can amplify its own biases over time without anyone noticing."
-  - title: "Model Bias"
-    description: "Bias auditing across protected groups. Fairness is a production requirement, not a recommendation."
+participation:
+  - text: "This course is a build-along workshop. Attendance and active participation are expected. You will be writing code, discussing design decisions, and reviewing each other's work during every session."
 
-# ── 7. Logistics ──
+diversity:
+  - text: "All students are welcome in this course. We expect everyone to contribute to an environment of respect, curiosity, and constructive feedback. If something about the course design or materials creates a barrier to your participation, speak to the instructor."
+
+accommodations:
+  - text: "If you need accommodations for any reason — medical, personal, or otherwise — contact the instructor. We handle these individually and keep them confidential."
+
 logistics:
   - label: "Environment"
     value: "Python, Docker Desktop, terminal. GitHub Codespaces (free tier) as fallback. Starter repo — fork and build forward."
@@ -106,40 +85,86 @@ logistics:
   - label: "AI Policy"
     value: "AI tools may be used freely — learning to work with AI is itself a course objective. All submitted code must be your own. Disclose form and extent of AI assistance."
 
-# ── 8. References ──
 references:
+  - title: "CMU 17-445 ML in Production"
+    url: "https://mlip-cmu.github.io/s2025/"
+    note: "Primary inspiration · milestone-based · production under real load"
   - title: "DataTalksClub MLOps Zoomcamp"
     url: "https://github.com/DataTalksClub/mlops-zoomcamp"
     note: "Free 9-week course · NY Taxi example"
-  - title: "CMU 17-445 ML in Production"
-    url: "https://mlip-cmu.github.io/s2025/"
-    note: "Milestone-based · production under real load"
+  - title: "Building Intelligent Systems (Hulten)"
+    url: "https://www.buildingintelligentsystems.com/"
+    note: "Core textbook · how to build ML-powered products"
+  - title: "Machine Learning in Production (CMU textbook)"
+    url: "https://mlip-cmu.github.io/book/"
+    note: "Free online · chapters corresponding to every lecture"
   - title: "Microsoft LLMOPs Workshop"
     url: "https://microsoft.github.io/llmops-workshop/"
     note: "Slides + hands-on labs"
   - title: "DeepLearning.AI ML in Production"
     url: "https://www.deeplearning.ai/courses/machine-learning-in-production/"
-    note: "Andrew Ng · deployment-first"
+    note: "Andrew Ng · deployment-first approach"
 
-# ── 9. Instructor ──
 instructor: "Eeshan Srivastava"
 instructorBio: "Senior Data Science Manager at Starbucks. Deploying marketing measurement systems (MMM, incrementality, experimentation) at nine-figure scale. Previously at Overstock.com. MS in Business Analytics, Case Western (Weatherhead 5 Under 35). Speaker at UCLA Anderson and company-wide AI workshops (200+). Writes about local AI and MLOps on [Asymptotic](https://theasymptotic.substack.com)."
 ---
 
-```mermaid
-flowchart LR
-    ML[XGBoost<br/>predict] -->|serve| API[FastAPI<br/>serve]
-    API -->|converse| LLM[Claude / Ollama<br/>explain & act]
+This is a course for students who want to **build software products with machine learning, not just models**. We assume you can train a model in Python. The question this course answers: <span class="accent">what does it take to turn that model into a product</span> — to deploy it, have confidence in its quality, and operate it in the real world?
 
-    style ML fill:#fff,stroke:#111,stroke-width:2px
-    style API fill:#fff,stroke:#111,stroke-width:2px
-    style LLM fill:#fff,stroke:#111,stroke-width:3px
-    ```
+The course covers the full lifecycle: from a notebook prototype to a deployed prediction API, through experiment tracking, containerization, monitoring, and finally wrapping the system with an LLM-powered conversational interface. Each lecture adds one production capability to the same codebase. By the end of five weeks you have built a working AI product end-to-end.
 
-Most ML programs stop at the model. You learn to train, tune, evaluate — and then you're on your own when someone asks "can we deploy this?" This course picks up where those programs leave off.
+We also cover what happens when things go wrong — <span class="accent">because they will</span>. Every ML component makes mistakes. The question is whether the system around it handles those mistakes or quietly breaks. We address safety, fairness, security, and the operational reality of maintaining ML systems at scale. The course closes by mapping every FOSS tool you used to its enterprise counterpart, so you know exactly what changes when the project goes from your laptop to a production environment serving millions of users.
 
-We treat the model as one component in a larger system. A churn prediction is not a product. A churn prediction wrapped in an API, tracked over time, containerized for deployment, monitored for drift, and fronted by an LLM that explains the result in plain English — *that* is a product. And it will still make wrong predictions, so the system needs to handle that too.
+## Who This Course Is For
 
-The course runs on a single project that grows each week: *train → deploy → track → containerize → monitor → wrap with LLM*. By the end you've built a hybrid ML + LLM system — a prediction engine with a conversational interface. Each lecture adds one production capability to the same codebase.
+You have trained ML models in Python. You know scikit-learn, pandas, and Jupyter notebooks. You may have built models for class projects or at work, <span class="accent">but you have not had to deploy them, monitor them in production, or build the infrastructure around them</span>.
 
-What does drift cost in lost revenue? Why would an auditor care about model versioning? How does an LLM turn a probability into an action someone can actually take? If you cannot answer these questions for your model, it is not in production.
+This course does not assume a software engineering background. You do not need experience with Docker, CI/CD, or cloud infrastructure. We teach those as we go. You do need basic Python fluency, comfort with the command line, and willingness to read documentation and learn new tools on your own.
+
+If you are unsure whether your background is sufficient, look at the Lecture 1 deliverable: <span class="accent">deploy a FastAPI endpoint that serves predictions from a trained model</span>. If you can train a model in Python, you can do this.
+
+## Topics Covered
+
+The course addresses the following questions, organized by lecture:
+
+- **From notebook to production service.** <span class="accent">How do you take a model that works in a notebook and deploy it as a live API?</span> What happens when the endpoint returns a wrong prediction, and how should the system handle that?
+- **Experiment tracking and model selection.** How do you track experiments so your work is reproducible and auditable? <span class="accent">Which qualities matter beyond accuracy</span> — latency, cost, model size, fairness — and how do you navigate tradeoffs between them?
+- **Infrastructure and orchestration.** How do you make a service reproducible across machines? How do you automate retraining so the model stays fresh without manual intervention?
+- **Monitoring, testing, and CI/CD.** How do you detect when a model's performance degrades in production? How do you distinguish data quality problems from drift from feedback loops? How do you audit for bias and run A/B tests with statistical rigor?
+- **LLM interface and safety.** How do you wrap a prediction API with an LLM so raw scores become explanations and suggested actions? <span class="accent">How do you handle hallucination, prompt injection, and adversarial inputs?</span> How do you connect ML output to business decisions?
+
+## Examples and Case Studies
+
+The running example for this course is customer churn prediction: a supervised ML problem that is universally understood in business contexts. Students build a system that predicts which customers are likely to leave, explains why in plain English, and suggests retention actions.
+
+The course architecture is domain-agnostic. The same pipeline works for fraud detection (flag suspicious transactions, explain risk scores), demand forecasting (predict product demand, answer driver questions), or recommendation systems (recommend items, explain why). Students may substitute any domain with a public dataset and a natural "ask questions about the results" story.
+
+Throughout the course we reference real production systems and case studies: how Spotify personalizes playlists, how automated transcription services handle noisy audio at scale, how fraud detection systems balance false positives and customer friction.
+
+## Course Project
+
+Over 5 weeks you build one project that grows each week. You start with a trained churn model in a notebook. <span class="accent">Each lecture adds a new capability to the same codebase:</span>
+
+1. Deploy the model as a FastAPI endpoint. Test it with real requests and edge cases.
+2. Track experiments with MLflow. Compare models across multiple quality dimensions. Register the best model.
+3. Containerize the service with Docker. Add Prefect for scheduled retraining.
+4. Add pytest tests, Evidently monitoring, bias audits, and GitHub Actions CI/CD.
+5. Wrap the API with an LLM interface. Add safety guardrails. Ship the full product.
+
+You submit the same repository each week, showing additive progress. The final deliverable is a working AI product — not a final exam.
+
+## Learning Outcomes
+
+After taking this course, you should be able to:
+
+- Deploy a trained ML model as a production API with error handling for malformed input
+- Track, compare, and register models using experiment tracking tools
+- Justify model selection based on multiple quality dimensions beyond accuracy
+- Containerize an ML service and automate retraining with a pipeline orchestrator
+- Detect data quality issues, data drift, concept drift, and feedback loops in production
+- Audit ML models for bias across user segments
+- Design and run A/B tests to compare model versions with statistical rigor
+- Build a CI/CD pipeline that validates code and models on every push
+- Wrap a prediction API with an LLM to produce explanations and actionable insights
+- Implement guardrails for hallucination, prompt injection, and adversarial inputs
+- Map FOSS MLOps tools to their enterprise counterparts and understand what changes at each level of scale

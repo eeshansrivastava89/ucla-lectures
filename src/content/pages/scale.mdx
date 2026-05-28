@@ -1,14 +1,14 @@
 ---
-title: "From FOSS to Scale"
-subtitle: "Same pipeline. Different infrastructure."
+title: "What You Take With You"
+subtitle: "Every tool you used maps to an enterprise counterpart. The thinking transfers. The infrastructure scales."
 
-pageLabel: Closer
+pageLabel: "Wrap-Up"
 
 sectionHeadings:
   principles: Principles
   stackMap: "Full Stack Mapping"
   scaleChanges: "What Changes at Scale"
-  walkAway: "What Students Walk Away With"
+  walkAway: "What You Walk Away With"
 
 tableHeaders:
   stackMap:
@@ -26,10 +26,10 @@ principles:
     desc: "Every FOSS tool has an enterprise counterpart solving the same problem at larger scale. The architecture doesn't change — the infrastructure does."
   - num: "02"
     title: "Concepts are portable"
-    desc: "Understand drift in Evidently → operate Arize. Know MLflow locally → navigate Vertex AI. Mental models transfer."
+    desc: "Understand drift in Evidently and you can operate Arize. Know MLflow locally and you can navigate Vertex AI. The buttons and dashboards change, but the mental models carry over."
   - num: "03"
     title: "Build free, scale when ready"
-    desc: "Zero-cost tools on your laptop. Enterprise infrastructure when the business case demands it. No premature optimization."
+    desc: "Zero-cost tools on your laptop get you to a working product. Enterprise infrastructure comes when the business case demands it — not before."
 
 stackMap:
   - foss: "Python + XGBoost"
@@ -77,20 +77,20 @@ stackMap:
 
 scaleChanges:
   - title: "Availability"
-    desc: "Laptop → 99.9% uptime with health checks, auto-restart, multi-AZ"
+    desc: "Laptop → 99.9% uptime with health checks, auto-restart, and multi-AZ deployment"
   - title: "Observability"
-    desc: "Log files → distributed tracing, structured logging, automated alerting"
+    desc: "Terminal logs → distributed tracing, structured logging, and automated alerting"
   - title: "Security"
-    desc: "No auth → OAuth2, RBAC, secret management, network policies"
+    desc: "No auth → OAuth2, RBAC, secret management, and network policies"
   - title: "Compliance"
-    desc: "\"It works\" → data lineage, model cards, audit trails, GDPR/CCPA"
+    desc: "\"It works\" → data lineage, model cards, audit trails, and GDPR/CCPA readiness"
   - title: "Cost control"
-    desc: "Free tier → GPU allocation, spot instances, FinOps dashboards"
+    desc: "Free tier → GPU allocation, spot instances, and FinOps dashboards"
 
 walkAway:
-  - "A working AI product — prediction API + LLM interface — built end-to-end"
-  - "Mental models that transfer — FOSS to enterprise, same concepts, different scale"
-  - "Production habits — tracking, testing, monitoring, CI/CD, bias auditing, LLM safety"
+  - "A working AI product — prediction API + LLM interface — built end-to-end with free tools"
+  - "Mental models that transfer from FOSS to enterprise. The concepts are the same."
+  - "Production habits: tracking, testing, monitoring, CI/CD, bias auditing, and LLM safety"
   - "The confidence to say \"I can deploy a model\" — not just \"I can train one\""
 ---
 
@@ -103,4 +103,10 @@ flowchart LR
     style ENT fill:#fff,stroke:#111,stroke-width:3px
     ```
 
-The FOSS stack gets you to a working product. The enterprise stack gets you to a reliable product at scale. The architecture is the same. The infrastructure changes.
+You spent five weeks building a product with free tools on your laptop. You deployed a churn prediction API, tracked experiments, containerized the service, added monitoring and CI/CD, and wrapped it all with an LLM-powered interface. Every tool you touched was open-source and ran on your machine with zero cloud spend.
+
+This page is the bridge from that experience to the industry. Every tool you used has an enterprise counterpart. FastAPI becomes an API gateway with load balancing and auth. Docker Compose becomes Kubernetes. Evidently becomes Arize. The concepts are identical — drift is drift whether you detect it with Evidently or Fiddler. The infrastructure changes. The architecture does not.
+
+The table below maps every FOSS tool to its enterprise counterpart, lecture by lecture. The last section shows what changes at each level of scale: availability, observability, security, compliance, and cost. These are the dimensions that separate a proof of concept from a production system serving millions of users.
+
+You walk away knowing not just how to build an ML product, but exactly what changes when the business says "we need this at scale."

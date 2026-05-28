@@ -17,15 +17,15 @@ tools:
   - Evidently AI
   - GitHub Actions
 topics:
-  - "Unit and integration testing for ML pipelines"
-  - "Data quality — is the input well-formed? Schema enforcement, missing values, type violations"
+  - "Unit and integration testing for ML pipelines — if you can't test it, you can't trust it"
+  - "Data quality — schema enforcement, missing values, type violations. Bad data in, bad predictions out."
   - "Data drift vs. concept drift — the data changed, or the meaning changed. Different problems, different responses."
-  - "Feedback loops — when your predictions change user behavior, which changes future training data"
-  - "Evidently — monitoring dashboards for data quality, drift, and model performance"
-  - "Bias auditing — checking for disparate impact across protected groups"
-  - "Experimenting in production — A/B testing models with statistical rigor"
-  - "GitHub Actions CI/CD — every push is validated automatically"
-bigTech: "Evidently → Arize / Fiddler with real-time drift detection and automated alerting. pytest → enterprise test suites with coverage gates. Feature flags → LaunchDarkly / Split for A/B experiments at scale. GitHub Actions → Jenkins / Buildkite with staging environments and canary deployments."
+  - "Feedback loops — your predictions change user behavior, which changes future training data. Hard to detect, easy to ignore."
+  - "Evidently — dashboards for data quality, drift detection, and model performance"
+  - "Bias auditing — checking for disparate impact across user segments"
+  - "A/B testing in production — comparing models with statistical rigor"
+  - "GitHub Actions — every push is validated automatically"
+bigTech: "Evidently becomes Arize or Fiddler with real-time drift detection and automated alerting. pytest becomes enterprise test suites with coverage gates. Feature flags let you run A/B tests at scale with LaunchDarkly or Split. GitHub Actions becomes Jenkins or Buildkite with staging environments and canary deployments."
 
 prevNav: "03 · Infrastructure & Orchestration"
 nextNav: "05 · LLM Interface + Safety + Value Realization"
@@ -47,8 +47,8 @@ flowchart LR
     style CI fill:#fafafa,stroke:#111,stroke-width:1px
     ```
 
-A model that worked at deployment can silently degrade. Data changes shape, pipelines break without warning, and biases that were invisible in training show up once real people are affected. This lecture adds the safety layer: tests, monitoring, and CI/CD.
+A model that worked at deployment can silently degrade. Data changes shape, pipelines break without warning, and biases that were invisible in training show up once real people are affected. This lecture adds the safety layer.
 
-We draw a clear line between three problems that often get lumped together. Data quality asks whether the incoming data is well-formed — schema violations, missing fields, and type errors are not drift, they are garbage in. Drift asks whether the distribution has changed — data drift means the inputs shifted, concept drift means the relationship between inputs and outputs shifted, and they require different responses. Feedback loops ask whether our predictions changed the world — if we recommend products and users click them, are we learning what users want, or are we learning what we recommended? This is the hardest problem to detect because nothing is obviously broken.
+We separate three problems that often get lumped together. <span class="accent">Data quality</span> asks whether the incoming data is well-formed — schema violations, missing fields, and type errors are not drift, they are garbage in. <span class="accent">Drift</span> asks whether the distribution has changed — data drift means the inputs shifted, concept drift means the relationship between inputs and outputs shifted. These require different responses. <span class="accent">Feedback loops</span> ask whether your predictions changed the world: if you recommend products and users click them, are you learning what users want, or are you learning what you recommended? This is the hardest problem to catch because nothing looks broken.
 
-We also address bias auditing and A/B testing. Fairness is not a nice-to-have — MSBA students will be the ones asked "is this model fair?" within their first month on the job. A/B testing is how you answer "is the new model actually better?" with evidence, not intuition.
+We also cover bias auditing and A/B testing. <span class="accent">Fairness is not optional</span> — MSBA graduates are often the first person asked "is this model fair?" in their organization. A/B testing is how you answer "is the new model actually better?" with evidence instead of instinct. By the end of this lecture your pipeline has tests, monitoring, and a CI workflow that runs on every push.

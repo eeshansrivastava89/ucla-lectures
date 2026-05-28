@@ -6,14 +6,70 @@ import '../styles/global.css';
 export interface Props {
   title: string;
   current: string;
+  prevUrl?: string;
+  nextUrl?: string;
 }
-const { title, current } = Astro.props;
+const { title, current, prevUrl, nextUrl } = Astro.props;
 ---
 <Base title={title}>
   <Sidebar current={current} />
   <div class="lg:pl-64">
-    <main class="max-w-4xl mx-auto px-8 lg:px-12 pt-20 pb-32">
+    <main class="max-w-5xl mx-auto px-8 lg:px-16 pt-20 pb-32">
       <slot />
     </main>
   </div>
+
+  {prevUrl && (
+    <a href={prevUrl} class="page-nav page-nav-left" aria-label="Previous page">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </a>
+  )}
+  {nextUrl && (
+    <a href={nextUrl} class="page-nav page-nav-right" aria-label="Next page">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  )}
+
+  <style is:raw>
+    .page-nav {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+      color: var(--fg-muted);
+      transition: color 0.15s, background-color 0.15s;
+    }
+    .page-nav:hover {
+      color: var(--fg);
+      background-color: var(--bg-hover);
+    }
+    .page-nav-left {
+      left: 256px;
+    }
+    .page-nav-right {
+      right: 0;
+    }
+    @media (max-width: 1023px) {
+      .page-nav-left { left: 0; }
+      .page-nav { width: 48px; }
+    }
+  </style>
+
+  <script is:raw>
+    document.addEventListener('keydown', function(e) {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+      const prevEl = document.querySelector('.page-nav-left');
+      const nextEl = document.querySelector('.page-nav-right');
+      if (e.key === 'ArrowLeft' && prevEl) {
+        window.location.href = prevEl.getAttribute('href');
+      }
+      if (e.key === 'ArrowRight' && nextEl) {
+        window.location.href = nextEl.getAttribute('href');
+      }
+    });
+  </script>
 </Base>

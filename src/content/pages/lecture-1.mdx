@@ -21,10 +21,10 @@ topics:
   - "A model makes predictions. A system makes decisions. The gap between the two is where production work lives."
   - "Notebooks vs. production code — why the gap exists and what it costs"
   - "Training a churn model (XGBoost) on real data"
-  - "FastAPI — from Python function to HTTP endpoint"
+  - "FastAPI — turning a Python function into an HTTP endpoint"
   - "Testing your API — request, response, edge cases"
   - "What happens when the endpoint returns a wrong prediction?"
-bigTech: "ML in a notebook → ML behind an API gateway with load balancers, rate limiting, and auth. Same pattern, 100× the infrastructure. At scale, add service mesh (Istio), circuit breakers, and distributed tracing."
+bigTech: "Your FastAPI endpoint on localhost is the same pattern as an API behind a load balancer at a company with millions of users. At scale you add an API gateway for rate limiting and auth, a service mesh for routing, and distributed tracing so you can see which service broke when something goes wrong. The core idea — a model behind an HTTP endpoint — doesn't change."
 
 prevNav: null
 nextNav: "02 · Experiment Tracking & Model Selection"
@@ -42,8 +42,8 @@ flowchart LR
     style SVC fill:#fff,stroke:#111,stroke-width:2px
     ```
 
-Every ML project starts in a notebook. A notebook is a fine place to explore data and train a model, but it is not a product. It has no API, no error handling, no way for anything else to call it. This lecture takes the trained model and deploys it as a live prediction endpoint — the first step from prototype to system.
+Every ML project starts in a notebook. A notebook is a fine place to explore data and train a model. <span class="accent">It is not a product.</span> It has no API, no error handling, no way for anything else to call it.
 
-But "deploy the model" is the easy part. The harder question, and the one most courses skip: what happens when this endpoint returns the wrong prediction? Because it will. Every ML component in production makes mistakes — that is not exceptional, it is normal. The question is whether the system around it handles those mistakes or falls apart.
+This lecture takes a trained churn model and deploys it as a live prediction endpoint. You write a FastAPI app, define a `/predict` route, and serve predictions over HTTP. This is the first step from prototype to system, and it is the shortest step in the course. The rest of the lectures are about whether you can trust what this endpoint tells you.
 
-Students leave with a working endpoint and a question they will spend the rest of the course answering: *you can call this API, but can you trust what it tells you?*
+Because deploying the model is the easy part. The harder question is what happens when it returns a wrong prediction. <span class="accent">Every ML component makes mistakes. That is normal.</span> The question is whether the system around it handles those mistakes or quietly breaks. You start answering that question here, and you spend the rest of the course building the answer.

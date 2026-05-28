@@ -17,11 +17,11 @@ tools:
   - Docker Compose
   - Prefect
 topics:
-  - "Docker — why containers exist and what problem they solve"
-  - "Containerizing the FastAPI service"
-  - "Pipeline orchestration — Prefect for automated retraining"
-  - "Environment reproducibility — from requirements.txt to Dockerfile"
-bigTech: "Docker → Kubernetes on EKS/GKE with HPA autoscaling. Prefect → Airflow at scale with DAG versioning, SLA monitoring, and cross-team dependency management."
+  - "Docker — why containers exist and what problem they solve. Hint: 'it works on my machine' is the problem."
+  - "Containerizing the FastAPI service and MLflow together"
+  - "Pipeline orchestration with Prefect — running retraining on a schedule instead of waiting for someone to remember"
+  - "Environment reproducibility — from requirements.txt to Dockerfile to docker compose up"
+bigTech: "Docker Compose on your laptop becomes Kubernetes on EKS or GKE at scale, with autoscaling, health checks, and rolling updates. Prefect becomes Airflow, running hundreds of DAGs across teams with dependency management and SLA monitoring. The concepts — containers, orchestration, reproducible environments — are the same. The complexity of managing them at scale is what changes."
 
 prevNav: "02 · Experiment Tracking & Model Selection"
 nextNav: "04 · Monitoring, Testing, Bias & CI/CD"
@@ -37,6 +37,8 @@ flowchart LR
     style P fill:#fff,stroke:#111,stroke-width:3px
     ```
 
-"It works on my machine" is not a deployment strategy. Containers solve the environment problem: same code, same dependencies, same behavior everywhere. This lecture wraps the prediction service in a container and adds orchestration so the system retrains on a schedule instead of waiting for someone to remember.
+"It works on my machine" is not a deployment strategy. <span class="accent">Containers solve this: same code, same dependencies, same behavior on your laptop, your teammate's laptop, and the server.</span> This lecture wraps the prediction service and MLflow in Docker, then adds Prefect so the system retrains on a schedule.
 
-Students go from a brittle laptop setup to something reproducible. Docker guarantees the environment. Prefect guarantees the process. Together they turn a script into a system that runs the same way every time, whether it is Tuesday at noon or Sunday at 3am.
+A Dockerfile is a short script that describes exactly what your service needs to run — Python version, packages, environment variables. Docker Compose orchestrates multiple containers so the API, MLflow, and Prefect all start together with one command. Prefect adds scheduled retraining: instead of manually rerunning a notebook when you want a fresh model, the pipeline runs it automatically, logs the results, and registers the new version.
+
+By the end of this lecture your service is reproducible. <span class="accent">Anyone on your team can run it. It retrains without you.</span> That is the difference between a script and a system.
