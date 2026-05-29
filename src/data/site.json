@@ -14,6 +14,6 @@
     { "href": "lectures/4", "label": "04 · Monitoring & CI/CD", "id": "lecture-4" },
     { "href": "lectures/5", "label": "05 · LLM Interface", "id": "lecture-5" },
     { "type": "divider" },
-    { "href": "scale", "label": "FOSS → Scale", "id": "scale" }
+    { "href": "scale", "label": "Summary & Takeaways", "id": "scale" }
   ]
 }

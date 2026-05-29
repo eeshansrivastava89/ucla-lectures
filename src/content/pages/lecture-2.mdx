@@ -45,7 +45,7 @@ flowchart LR
     style MLflow fill:#fff,stroke:#111,stroke-width:2px
     ```
 
-When you train one model, you remember what you did. When you train fifty, you don't. This lecture introduces experiment tracking, the discipline that keeps your work reproducible and auditable.
+When you train one model, you remember what you did. When you train fifty, you don't. This lecture introduces experiment tracking — how you keep your work reproducible and auditable.
 
 Tracking is half the problem. The other half is deciding which model goes to production. <span class="accent">In a notebook you pick the one with the highest accuracy. In production, accuracy is one quality among several.</span> A model that is 3% less accurate but 10× faster and costs a tenth as much to run might be the right choice. Two models with identical accuracy can have different fairness profiles across user segments. The right model fits the constraints, and the constraints come from the business, not the notebook.
 

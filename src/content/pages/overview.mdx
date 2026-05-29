@@ -1,6 +1,6 @@
 ---
-title: "AI/ML in Production"
-subtitle: "Build, deploy, and maintain an ML product over 5 weeks — prediction API through LLM interface"
+title: "[Draft] AI/ML in Production"
+subtitle: "5-lecture course that covers building and deploying AI/ML models in production. Covers core concepts on MLOps, explainability through a hands-on project built during the course."
 program: "UCLA Anderson MSBA · Fall 2026"
 
 sectionHeadings:
@@ -23,19 +23,19 @@ sectionHeadings:
 
 info:
   - label: Instructor
-    value: "Eeshan Srivastava · Sr. Data Science Manager, Starbucks · CS undergrad + MBA"
+    value: "Eeshan Srivastava · Sr. Data Science Manager, Starbucks"
   - label: Format
-    value: "5 lectures · 3 hrs each · build-along workshop"
+    value: "5 lectures · 3 hrs each · build-along format"
   - label: Audience
-    value: "MSBA — you know how to build a model; this course teaches you to make it work in the real world"
+    value: "UCLA MSBA students; prior background in data science and programming preffered but not necessary"
   - label: Project
-    value: "Deploy an AI product end-to-end: prediction API → tracking → containers → monitoring → LLM interface"
-  - label: Infra
-    value: "Your laptop + GitHub Codespaces. Zero cloud spend. Starter repo provided. <a href='scale'>Stack details →</a>"
+    value: "Build and deploy an AI product end-to-end: model prediction API → tracking → containers → monitoring → LLM interface"
+  - label: Technical Requirements
+    value: "Your laptop + AI Coding Agent (Claude, Codex etc.) + GitHub Codespaces. Starter repo provided."
 
 copy:
-  scheduleNote: "Each session runs 3 hours: concept (50 min) → break (10 min) → build (120 min). You leave with a new working capability each week."
-  assessmentNote: "Project milestones, not exams. Each lecture has a checkpoint on the same codebase. You submit the same repo each week, showing additive progress. The final deliverable is a working product."
+  scheduleNote: "Each session runs 3 hours: concept (50 min) → break (10 min) → build (120 min). The goal is to iteratively build the product each week."
+  assessmentNote: "Project milestones. Each lecture has a checkpoint on the same codebase. You submit the same repo each week, showing additive progress. The final deliverable is a working product."
 
 tableHeaders:
   schedule:
@@ -49,7 +49,7 @@ tableHeaders:
       width: "w-16 text-right"
 
 assessment:
-  - component: "Milestone 1: Working prediction API"
+  - component: "Milestone 1: Working model prediction API"
     weight: "20%"
   - component: "Milestone 2: Experiment tracking + tradeoff-based model selection"
     weight: "15%"
@@ -106,14 +106,14 @@ references:
     note: "Andrew Ng · deployment-first approach"
 
 instructor: "Eeshan Srivastava"
-instructorBio: "Senior Data Science Manager at Starbucks. Deploying marketing measurement systems (MMM, incrementality, experimentation) at nine-figure scale. Previously at Overstock.com. MS in Business Analytics, Case Western (Weatherhead 5 Under 35). Speaker at UCLA Anderson and company-wide AI workshops (200+). Writes about local AI and MLOps on [Asymptotic](https://theasymptotic.substack.com)."
+instructorBio: "Senior Data Science Manager at Starbucks."
 ---
 
-This is a course for students who want to **build software products with machine learning, not just models**. We assume you can train a model in Python. The question this course answers: <span class="accent">what does it take to turn that model into a product</span> — to deploy it, have confidence in its quality, and operate it in the real world?
+This is a course for students who want to **build software products powered by AI/ML**. We assume you can train a model in Python. The question this course answers: <span class="accent">what does it take to turn that model into a consumer-facing product</span> — to deploy it, have confidence in its quality, and operate it in the real world?
 
-The course covers the full lifecycle: from a notebook prototype to a deployed prediction API, through experiment tracking, containerization, monitoring, and finally wrapping the system with an LLM-powered conversational interface. Each lecture adds one production capability to the same codebase. By the end of five weeks you have built a working AI product end-to-end.
+The course covers the full lifecycle: notebook prototype → deployed prediction API → experiment tracking → containerization → monitoring → LLM-powered conversational interface. Each lecture adds one production capability to the same codebase. By the end of five weeks you have built a working AI product end-to-end.
 
-We also cover what happens when things go wrong — <span class="accent">because they will</span>. Every ML component makes mistakes. The question is whether the system around it handles those mistakes or quietly breaks. We address safety, fairness, security, and the operational reality of maintaining ML systems at scale. The course closes by mapping every FOSS tool you used to its enterprise counterpart, so you know exactly what changes when the project goes from your laptop to a production environment serving millions of users.
+We also cover what happens when things go wrong — <span class="accent">because they will</span>. Every ML component makes mistakes. The question is whether the system around it handles those mistakes or quietly breaks. We address safety, fairness, security, and the operational reality of maintaining ML systems at scale. The course closes by mapping every tool you used to its enterprise counterpart, so you know exactly what changes when the project goes from your laptop to a production environment serving millions of users.
 
 ## Who This Course Is For
 
@@ -135,11 +135,11 @@ The course addresses the following questions, organized by lecture:
 
 ## Examples and Case Studies
 
-The running example for this course is customer churn prediction: a supervised ML problem that is universally understood in business contexts. Students build a system that predicts which customers are likely to leave, explains why in plain English, and suggests retention actions.
+The running example for this course is customer churn prediction: a supervised ML problem that maps directly to business analytics roles. Students build a system that predicts which customers are likely to leave, explains why in plain English, and suggests retention actions.
 
-The course architecture is domain-agnostic. The same pipeline works for fraud detection (flag suspicious transactions, explain risk scores), demand forecasting (predict product demand, answer driver questions), or recommendation systems (recommend items, explain why). Students may substitute any domain with a public dataset and a natural "ask questions about the results" story.
+The same pipeline works for fraud detection (flag suspicious transactions, explain risk scores), demand forecasting (predict product demand, answer driver questions), or recommendation systems (recommend items, explain why). Pick any domain with a public dataset and a natural "ask questions about the results" story.
 
-Throughout the course we reference real production systems and case studies: how Spotify personalizes playlists, how automated transcription services handle noisy audio at scale, how fraud detection systems balance false positives and customer friction.
+We reference real production systems throughout: how Spotify personalizes playlists, how fraud detection systems balance false positives against customer friction, how automated transcription services handle noisy audio at scale.
 
 ## Course Project
 
